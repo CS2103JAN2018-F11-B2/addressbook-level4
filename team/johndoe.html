@@ -157,6 +157,9 @@
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
+<div class="paragraph">
+<p>Alias Format: <code>u</code></p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -184,7 +187,7 @@ Format: <code>undo</code></p>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
-<code>undo</code><br>
+<code>u</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
@@ -203,6 +206,9 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
+<p>Alias Format: <code>r</code></p>
+</div>
+<div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -214,7 +220,7 @@ Format: <code>redo</code></p>
 </li>
 <li>
 <p><code>delete 1</code><br>
-<code>redo</code><br>
+<code>r</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
@@ -561,7 +567,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-08 13:29:46 UTC
+Last updated 2018-03-08 16:25:10 UTC
 </div>
 </div>
 </body>
