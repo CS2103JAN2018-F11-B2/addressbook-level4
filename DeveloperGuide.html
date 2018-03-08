@@ -2044,8 +2044,103 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-sort-by-locality" class="discrete">Use case: Sort by locality</h3>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User types “/sortl” in to the command line.</p>
+</li>
+<li>
+<p>Addressbook will prompt user to select whether they would like to view the list for students or tutors.</p>
+</li>
+<li>
+<p>User will enter either “s” for students or “t” for tutors.</p>
+</li>
+<li>
+<p>Addressbook will return a list of students or tutors based sorted by their locality.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. System detects an invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Addressbook request for either "s" or "t" to be inputted.</p>
+</li>
+<li>
+<p>3a2. User enter required information.</p>
+</li>
+<li>
+<p>3a3. Steps 3a1 and 3a2 are repeated until valid input is entered.</p>
+<div class="paragraph">
+<p>Use case resumes at step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-match" class="discrete">Use case: Match</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User finds the client he wants to match.</p>
+</li>
+<li>
+<p>Addressbook displays information of client.</p>
+</li>
+<li>
+<p>User requests for a match.</p>
+</li>
+<li>
+<p>Addressbook returns a list of potential matches.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Client cannot be found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. There is no match found.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Addressbook returns an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2058,15 +2153,24 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 5000 persons without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>Application should be able execute any command within 3 seconds.</p>
+</li>
+<li>
+<p>Application should have a self-explanatory installation process.</p>
+</li>
+<li>
+<p>Application should be less than 5mb in size.</p>
+</li>
+<li>
+<p>Application is expected to allow printing.</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2237,7 +2341,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-08 10:28:21 UTC
+Last updated 2018-03-08 13:23:31 UTC
 </div>
 </div>
 </body>
