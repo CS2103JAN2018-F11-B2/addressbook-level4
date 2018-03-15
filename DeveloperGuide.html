@@ -1955,14 +1955,14 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person (tutor or student)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">expand user&#8217;s addressbook for future tuition coordination</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that the user no longer need</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1973,8 +1973,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort contacts based on their locality</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">better match students to tutors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort contacts based on the clients' location (North, South, East, West, Central</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better match students and tutors that are staying near each other.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1985,32 +1985,26 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tag tutors and students with multiple values</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add contacts of both tutors and students</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tag tutors and students with multiple fields</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">do multi-layer searching to better match tutors and students</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorise contacts between students and tutors</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the number of tagging required and make searching more convenience</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group clients based on the subject they wish to study/teach</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group clients based on the subject they wish to study/teach (Math, Eng, Phy, Chem&#8230;&#8203;)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find and match client easily by the subjects registered</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">record what preference the students/tutors have (male/female)</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record the gender preference the students/tutors have (male/female)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find and match client easily by the gender preference registered</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2021,8 +2015,14 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have an autosave function</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">changes will be saved once i exit the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an auto-save function</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">changes will be saved once user exit the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search by tags added to client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generate a list of clients that have the same tags</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2033,38 +2033,26 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">do multi-layer searching</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">narrow down the options</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">request to know the qualification of the tutor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make my decision wisely</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">request to know the grades of the students</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make my decision wisely</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search multiple tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">narrow down the search to clients that fit all the different tags searched.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easily delete all students/tutors that quit with a single command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily delete all students/tutors</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save time manually deleting</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get a list of all tutors that corresponds to a students requirements</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">give students more choices on which tutor they want</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get a list of all students that corresponds to a tutor&#8217;s requirements</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">give tutors more choices on which students they want</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2082,7 +2070,7 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have a ranking on how good the tutor is</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">understand which tutor I should recommend more</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand which tutor the user should recommend more</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2094,19 +2082,19 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist certain tutors or students</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make sure I will not accept their assignments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make sure the user will not accept their assignments</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have the option to customise the font size and colour</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make changes to the appearance to suit my preference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make changes to the appearance to suit the user&#8217;s preference</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have the option to customise my background</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make the application more appealing to me</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have the option to customise the user&#8217;s background</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the application more appealing to the user</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2117,8 +2105,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of whether the tutors have paid me their agent fee</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track and remind those who have not pay me.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of whether the tutors have paid their agent fee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track and remind those who have not paid.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -2134,9 +2122,6 @@ for <code>RemarkCommandParser</code>.</p>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2491,7 +2476,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-08 16:25:09 UTC
+Last updated 2018-03-15 17:00:46 UTC
 </div>
 </div>
 </body>
