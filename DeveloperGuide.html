@@ -18,7 +18,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team F11-B2</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -1905,32 +1905,8 @@ for <code>RemarkCommandParser</code>.</p>
 <h2 id="product-scope"><a class="link" href="#product-scope">Appendix B: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Target user profile</strong>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Tuition coordinators who are comfortable with CLI applications</p>
-</li>
-<li>
-<p>A tuition service agent that receive calls from both tutor and students asking for assignments.</p>
-</li>
-<li>
-<p>has a need to manage a significant number of clients.</p>
-</li>
-<li>
-<p>prefer desktop apps over other types</p>
-</li>
-<li>
-<p>can type fast</p>
-</li>
-<li>
-<p>prefers typing over mouse input</p>
-</li>
-<li>
-<p>is reasonably comfortable using CLI apps</p>
-</li>
-</ul>
+<p><strong>Target user profile</strong>:
+* Tuition coordinators who handle significant number of contacts and are comfortable with CLI applications.</p>
 </div>
 <div class="paragraph">
 <p><strong>Value proposition</strong>:
@@ -2013,7 +1989,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorise contacts between students and tutors</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the number of tagging required and make searching more convenience</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the number of tagging required and make searching more convenient</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2032,12 +2008,6 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see and compare the price that students/tutors are willing to pay/accept</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">match them based on pricing</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have an auto-save function</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">changes will be saved once user exit the application</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2149,7 +2119,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>TuitionCor</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
 <div class="paragraph">
@@ -2161,13 +2131,13 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <p>User requests to list persons</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>TuitionCor shows a list of persons</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>TuitionCor deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2190,7 +2160,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. TuitionCor shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2200,23 +2170,17 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 </li>
 </ul>
 </div>
-<h3 id="use-case-sort-by-locality" class="discrete">Use case: Sort by locality</h3>
+<h3 id="use-case-sort-student-s-list-by-locality" class="discrete">Use case: Sort student&#8217;s list by locality</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User types “/sortl” in to the command line.</p>
+<p>User types “/sort sl” in to the command line.</p>
 </li>
 <li>
-<p>Addressbook will prompt user to select whether they would like to view the list for students or tutors.</p>
-</li>
-<li>
-<p>User will enter either “s” for students or “t” for tutors.</p>
-</li>
-<li>
-<p>Addressbook will return a list of students or tutors based sorted by their locality.</p>
+<p>TuitionCor will return a list of students or tutors based sorted by their locality.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2229,22 +2193,32 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. System detects an invalid input.</p>
+<p>1a. System detects an invalid input.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Addressbook request for either "s" or "t" to be inputted.</p>
+<p>1a1. TuitionCor will display invalid command or display sort message usage.</p>
 </li>
 <li>
-<p>3a2. User enter required information.</p>
+<p>1a2. User enter required information.</p>
 </li>
 <li>
-<p>3a3. Steps 3a1 and 3a2 are repeated until valid input is entered.</p>
+<p>1a3. Steps 3a1 and 3a2 are repeated until valid input is entered.</p>
 <div class="paragraph">
-<p>Use case resumes at step 4.</p>
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. System detects no further input.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
@@ -2259,10 +2233,10 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <p>User enter match followed by a person name.</p>
 </li>
 <li>
-<p>Addressbook displays information of client in the respective list (either tutor list or student list)</p>
+<p>TuitionCor displays information of client in the respective list (either tutor list or student list)</p>
 </li>
 <li>
-<p>Addressbook returns a list of potential matches in the respective list.</p>
+<p>TuitionCor returns a list of potential matches in the respective list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2285,7 +2259,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Addressbook returns an empty list.</p>
+<p>3a1. TuitionCor returns an empty list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2322,6 +2296,9 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 </li>
 <li>
 <p>Application is expected to allow printing.</p>
+</li>
+<li>
+<p>Application should have an auto-save function upon exiting the application.</p>
 </li>
 </ol>
 </div>
@@ -2589,7 +2566,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 08:39:44 UTC
+Last updated 2018-03-22 08:40:21 UTC
 </div>
 </div>
 </body>
