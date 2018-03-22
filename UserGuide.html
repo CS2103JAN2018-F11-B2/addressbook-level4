@@ -312,7 +312,51 @@ Returns any person having keyword <code>blk</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.7. Deleting a person : <code>delete</code></a></h3>
+<h3 id="matching-potential-clients-code-match-code"><a class="link" href="#matching-potential-clients-code-match-code">3.7. Matching potential clients: <code>match</code></a></h3>
+<div class="paragraph">
+<p>Matches any potential clients according to data input<br>
+Format: <code>match NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Alias Format: <code>m NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>Only the first name entered will be matched. if 2 names are entered only the first name will be matched. e.g. <code>Hans Bo</code> will return result based on <code>Hans</code></p>
+</li>
+<li>
+<p>Only the name can be used for match function.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Only clients that fit all the data fields will be listed. (i.e. <code>AND</code> search).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>match John</code><br>
+If John is a tutor finding students that are staying in WEST and is looking for sec4 chemistry, then <code>match John</code> will return a list of students that are staying in the WEST and is currently looking for sec4 chemistry tutor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.8. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -356,7 +400,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.8. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -400,7 +444,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -424,7 +468,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -472,7 +516,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -507,7 +551,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
@@ -517,7 +561,7 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.13. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -527,14 +571,14 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -585,6 +629,11 @@ e.g. <code>find James Jake</code><br>
 Alias: <code>f</code></p>
 </li>
 <li>
+<p><strong>Match</strong> : <code>match NAME</code><br>
+e.g. <code>match James</code><br>
+Alias: <code>m</code></p>
+</li>
+<li>
 <p><strong>List</strong> : <code>list</code><br>
 Alias: <code>l</code></p>
 </li>
@@ -610,131 +659,12 @@ Alias: <code>r</code></p>
 </li>
 </ul>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="literalblock">
-<div class="content">
-<pre>Alias : a</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : c</pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : d</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>e.g. <code>delete 3</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : e</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : f</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>e.g. <code>find James Jake</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : l</pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code><br></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : s</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>e.g.<code>select 2</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : h</pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : u</pre>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-<div class="literalblock">
-<div class="content">
-<pre>Alias : r</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 13:13:17 UTC
+Last updated 2018-03-22 20:18:43 UTC
 </div>
 </div>
 </body>
