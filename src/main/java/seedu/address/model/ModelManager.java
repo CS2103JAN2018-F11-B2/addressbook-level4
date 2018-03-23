@@ -14,6 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -87,14 +88,14 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public synchronized void addTutor(Client tutor) throws DuplicatePersonException {
+    public synchronized void addTutor(Client tutor) throws DuplicateClientException {
         addressBook.addTutor(tutor);
         updateFilteredTutorList(PREDICATE_SHOW_ALL_TUTORS);
         indicateAddressBookChanged();
     }
 
     @Override
-    public synchronized void addStudent(Client student) throws DuplicatePersonException {
+    public synchronized void addStudent(Client student) throws DuplicateClientException {
         addressBook.addStudent(student);
     }
 

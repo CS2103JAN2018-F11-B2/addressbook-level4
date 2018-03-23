@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.Client;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 
 /**
@@ -69,7 +70,7 @@ public class AddClientCommand extends UndoableCommand {
                 return new CommandResult(String.format(MESSAGE_SUCCESS_TUTOR, toAdd));
             }
 
-        } catch (DuplicatePersonException e) {
+        } catch (DuplicateClientException e) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 

@@ -19,10 +19,13 @@ public class XmlSerializableAddressBook {
 
     @XmlElement
     private List<XmlAdaptedPerson> persons;
+
     @XmlElement
     private List<XmlAdaptedTutors> tutors;
+
     @XmlElement
     private List<XmlAdaptedPerson> students;
+
     @XmlElement
     private List<XmlAdaptedTag> tags;
 

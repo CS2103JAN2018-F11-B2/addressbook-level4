@@ -71,7 +71,7 @@ public class XmlAdaptedTutors {
     /**
      * Converts a given Person into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     * @param source future changes to this will not affect the created XmlAdaptedTutors
      */
     public XmlAdaptedTutors(Client source) {
         name = source.getName().fullName;

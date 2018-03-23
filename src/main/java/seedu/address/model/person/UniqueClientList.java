@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -37,10 +38,10 @@ public class UniqueClientList implements Iterable<Client> {
      *
      * @throws DuplicatePersonException if the client to add is a duplicate of an existing client in the list.
      */
-    public void add(Client toAdd) throws DuplicatePersonException {
+    public void add(Client toAdd) throws DuplicateClientException {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateClientException();
         }
         internalList.add(toAdd);
     }
@@ -52,7 +53,7 @@ public class UniqueClientList implements Iterable<Client> {
      * @throws PersonNotFoundException if {@code target} could not be found in the list.
      */
     public void setClient(Client target, Client editedClient)
-            throws DuplicatePersonException, PersonNotFoundException {
+            throws DuplicateClientException, PersonNotFoundException {
         requireNonNull(editedClient);
 
         int index = internalList.indexOf(target);
@@ -61,7 +62,7 @@ public class UniqueClientList implements Iterable<Client> {
         }
 
         if (!target.equals(editedClient) && internalList.contains(editedClient)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateClientException();
         }
 
         internalList.set(index, editedClient);
@@ -81,17 +82,17 @@ public class UniqueClientList implements Iterable<Client> {
         return clientFoundAndDeleted;
     }
 
-    public void setPersons(UniqueClientList replacement) {
+    public void setClients(UniqueClientList replacement) {
         this.internalList.setAll(replacement.internalList);
     }
 
-    public void setPersons(List<Client> clients) throws DuplicatePersonException {
+    public void setClients(List<Client> clients) throws DuplicateClientException {
         requireAllNonNull(clients);
         final UniqueClientList replacement = new UniqueClientList();
         for (final Client client : clients) {
             replacement.add(client);
         }
-        setPersons(replacement);
+        setClients(replacement);
     }
 
     /**
