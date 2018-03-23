@@ -26,6 +26,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of tutors */
     ObservableList<Client> getFilteredTutorList();
 
+    /** Returns an unmodifiable view of the filtered list of tutors */
+    ObservableList<Client> getFilteredStudentList();
+
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
     ListElementPointer getHistorySnapshot();
 }

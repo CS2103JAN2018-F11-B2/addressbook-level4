@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -41,10 +42,10 @@ public interface Model {
             throws DuplicatePersonException, PersonNotFoundException;
 
     /** Adds the given tutor */
-    void addTutor(Client tutor) throws DuplicatePersonException;
+    void addTutor(Client tutor) throws DuplicateClientException;
 
     /** Adds the given student */
-    void addStudent(Client student) throws DuplicatePersonException;
+    void addStudent(Client student) throws DuplicateClientException;
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
@@ -57,6 +58,9 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered tutors list */
     ObservableList<Client> getFilteredTutorList();
+
+    /** Returns an unmodifiable view of the filtered students list */
+    ObservableList<Client> getFilteredStudentList();
 
     /**
      * Updates the filter of the filtered tutor list to filter by the given {@code predicate}.
