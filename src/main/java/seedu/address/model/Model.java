@@ -58,6 +58,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered tutors list */
     ObservableList<Client> getFilteredTutorList();
 
+    /** Returns an unmodifiable view of the filtered students list */
+    ObservableList<Client> getFilteredStudentList();
+
     /**
      * Updates the filter of the filtered tutor list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

@@ -23,6 +23,12 @@ public interface ReadOnlyAddressBook {
     ObservableList<Client> getTutorList();
 
     /**
+     * Returns an unmodifiable view of the students list.
+     * This list will not contain any duplicate clients.
+     */
+    ObservableList<Client> getStudentList();
+
+    /**
      * Returns an unmodifiable view of the tags list.
      * This list will not contain any duplicate tags.
      */

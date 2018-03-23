@@ -27,6 +27,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Client> filteredTutors;
+    private final FilteredList<Client> filteredStudents;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredStudents = new FilteredList<>(this.addressBook.getStudentList());
         filteredTutors = new FilteredList<>(this.addressBook.getTutorList());
     }
 
@@ -120,6 +122,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public ObservableList<Client> getFilteredTutorList() {
         return FXCollections.unmodifiableObservableList(filteredTutors);
+    }
+
+    @Override
+    public ObservableList<Client> getFilteredStudentList() {
+        return FXCollections.unmodifiableObservableList(filteredStudents);
     }
 
     @Override
