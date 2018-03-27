@@ -15,6 +15,7 @@ import seedu.address.model.person.Client;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniqueClientList;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
@@ -60,6 +61,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setPersons(List<Person> persons) throws DuplicatePersonException {
         this.persons.setPersons(persons);
     }
+    public void setTutors(List<Client> tutors) throws DuplicateClientException {
+        this.tutors.setClients(tutors);
+    }
 
     public void setTags(Set<Tag> tags) {
         this.tags.setTags(tags);
@@ -75,9 +79,20 @@ public class AddressBook implements ReadOnlyAddressBook {
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
 
+        List<Client> syncedTutorList = newData.getTutorList().stream()
+                .map(this::syncWithMasterTagList)
+                .collect(Collectors.toList());
+
+
         try {
             setPersons(syncedPersonList);
         } catch (DuplicatePersonException e) {
+            throw new AssertionError("AddressBooks should not have duplicate persons");
+        }
+
+        try {
+            setTutors(syncedTutorList);
+        } catch (DuplicateClientException e) {
             throw new AssertionError("AddressBooks should not have duplicate persons");
         }
     }
@@ -107,7 +122,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
-    public void addTutor(Client t) throws DuplicatePersonException {
+    public void addTutor(Client t) throws DuplicateClientException {
         Client tutor = syncWithMasterTagList(t);
         // TODO: the tags master list will be updated even though the below line fails.
         // This can cause the tags master list to have additional tags that are not tagged to any person
@@ -122,7 +137,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
-    public void addStudent(Client t) throws DuplicatePersonException {
+    public void addStudent(Client t) throws DuplicateClientException {
         Client student = syncWithMasterTagList(t);
         // TODO: the tags master list will be updated even though the below line fails.
         // This can cause the tags master list to have additional tags that are not tagged to any person
@@ -228,6 +243,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Client> getTutorList() {
         return tutors.asObservableList();
+    }
+
+    @Override
+    public ObservableList<Client> getStudentList() {
+        return students.asObservableList();
     }
 
     @Override
