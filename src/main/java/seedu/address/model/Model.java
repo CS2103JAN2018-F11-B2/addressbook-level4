@@ -52,6 +52,23 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    /**Sorts tutor list by name in alphabetical order*/
+    void sortByNameFilteredClientTutorList();
+    /**Sorts tutor list by location in alphabetical order*/
+    void sortByLocationFilteredClientTutorList();
+    /**Sorts tutor list by grade in ascending order*/
+    void sortByGradeFilteredClientTutorList();
+    /**Sorts tutor list by subject in alphabetical order*/
+    void sortBySubjectFilteredClientTutorList();
+    /**Sorts student list by name in alphabetical order*/
+    void sortByNameFilteredClientStudentList();
+    /**Sorts student list by location in alphabetical order*/
+    void sortByLocationFilteredClientStudentList();
+    /**Sorts student list by grade in ascending order*/
+    void sortByGradeFilteredClientStudentList();
+    /**Sorts student list by subject in alphabetical order*/
+    void sortBySubjectFilteredClientStudentList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

@@ -141,6 +141,26 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortByNameFilteredClientTutorList() {
+            fail("This method should not be called");
+        }
+
+        @Override
+        public void sortByLocationFilteredClientTutorList() {
+            fail("This method should not be called");
+        }
+
+        @Override
+        public void sortByGradeFilteredClientTutorList() {
+            fail("This method should not be called");
+        }
+
+        @Override
+        public void sortBySubjectFilteredClientTutorList() {
+            fail("This method should not be called");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             fail("This method should not be called.");
         }
