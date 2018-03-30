@@ -95,6 +95,145 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>Breakdown of features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In v1.2:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Supports addition of client, either tutor or students.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In v1.3:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>All commands are working and integrated with client.</p>
+</li>
+<li>
+<p>Clients information are saved.</p>
+</li>
+<li>
+<p>New match feature which allowing matching of student to tutors or tutor to students.</p>
+</li>
+<li>
+<p>Sort feature which allows tutor&#8217;s and student&#8217;s list to be sorted by name, subject, location and grade.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Coming in v1.4:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Match function now includes a ranking system.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The ranking system works according to the number of matched attributes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Close function and switch function which allows user to close a particular student or tutor.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows user to close a tutor of student upon successful matching which will be stored in a closed tutor&#8217;s or student&#8217;s list for future reference.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhance grade, subject and location to support mutiple field.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Coming in v1.5:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Integrate all features together.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Coming in v2.0:</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Auto match function where.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Whenever a new client either student or tutor is added, a list of tutor or student who fits the criteria of the tutor or student will be displayed to the user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Integrate it with an online platform.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Whenever a user or student sign up on the online platform, their information will automatically be added into TuitionCor database.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -103,7 +242,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>there are alias for some of the commands, which helps users to save some time. e.g. for add command, you can use add n/&#8230;&#8203; or a n/&#8230;&#8203;</p>
+<p>There are alias for some of the commands, which helps users to save some time. e.g. for add command, you can use add n/&#8230;&#8203; or a n/&#8230;&#8203;</p>
 </li>
 <li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
@@ -128,42 +267,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
-<div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Alias Format: <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
-</li>
-<li>
-<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-client-code-addclient-code"><a class="link" href="#adding-a-client-code-addclient-code">3.3. Adding a client: <code>addclient</code></a></h3>
+<h3 id="adding-a-client-code-addclient-code-since-v1-2"><a class="link" href="#adding-a-client-code-addclient-code-since-v1-2">3.2. Adding a client: <code>addclient</code> {Since v1.2}</a></h3>
 <div class="paragraph">
 <p>Adds a client to TuitionCor<br>
 Format: <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
@@ -178,10 +282,71 @@ Format: <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TA
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A client can have any number of tags (including 0)
 </td>
 </tr>
 </table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User can only enter only a specific location and a specific grade for each client. The type of location and grade accepted can be found below.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s required to indicate the category the particular client belongs to.</p>
+</li>
+<li>
+<p>Accepted case-insensitive location available for user input are {North,South,East,West,Central}. Any other type of location will be invalid.</p>
+</li>
+<li>
+<p>Accepted case-insensitive grade available for user input are as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary 1' or 'P1'.</p>
+</li>
+<li>
+<p>LEVEL available are {Kindergarten, Primary, Secondary, Tertiary, University}. Alias LEVEL are {K,P,S,J,U} respectively.</p>
+</li>
+<li>
+<p>INDEX available varies differently for each Level.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Kindergarten INDEX available are {1,2,3}.</p>
+</li>
+<li>
+<p>For Primary INDEX available are {1,2,3,4,5,6}.</p>
+</li>
+<li>
+<p>For Secondary INDEX available are {1,2,3,4,5}.</p>
+</li>
+<li>
+<p>For Tertiary INDEX available are {1,2}.</p>
+</li>
+<li>
+<p>For University INDEX available are {1,2,3,4}</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -189,16 +354,16 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> t/urgent l/north g/p1 s/math</p>
 </li>
 <li>
-<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p>`ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary 1 s/math</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.4. Listing all persons : <code>list</code></a></h3>
+<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
 Format: <code>list</code></p>
@@ -208,20 +373,106 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.5. Editing a person : <code>edit</code></a></h3>
+<h3 id="sorting-a-client-sort-since-v1-3"><a class="link" href="#sorting-a-client-sort-since-v1-3">3.4. Sorting a client: 'sort' {Since v1.3}</a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Sorting tutor&#8217;s list based on name<br>
+Format: 'sort tn'
+Alias Format: 'so tn'</p>
 </div>
 <div class="paragraph">
-<p>Alias Format: <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Sorting tutor&#8217;s list based on location<br>
+Format: 'sort tl'
+Alias Format: 'so tl'</p>
+</div>
+<div class="paragraph">
+<p>Sorting tutor&#8217;s list based on grade<br>
+Format: 'sort tg'
+Alias Format: 'so tg'</p>
+</div>
+<div class="paragraph">
+<p>Sorting tutor&#8217;s list based on subject<br>
+Format: 'sort ts'
+Alias Format: 'so ts'</p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on name<br>
+Format: 'sort sn'
+Alias Format: 'so sn'</p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on location<br>
+Format: 'sort sl'
+Alias Format: 'so sl'</p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on grade<br>
+Format: 'sort sg'
+Alias Format: 'so sg'</p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on subject<br>
+Format: 'sort ss'
+Alias Format: 'so ss'</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>*Sorts the client based on the selected list, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.
+*Sorting by name, grade and subjects are based on alphabetical order.
+*Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:
+* 'sort tl'<br>
+Tutor&#8217;s list displayed will be sorted base on location.
+* 'sort ts'<br>
+Tutor&#8217;s list displayed will be sorted base on subject.
+* 'sort tn'<br>
+Tutor&#8217;s list displayed will be sorted base on name.
+* 'sort tg'<br>
+Tutor&#8217;s list displayed will be sorted base on grade.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>'sort sl'<br>
+Student&#8217;s list displayed will be sorted base on location.</p>
+</li>
+<li>
+<p>'sort ss'<br>
+Student&#8217;s list displayed will be sorted base on subject.</p>
+</li>
+<li>
+<p>'sort sn'<br>
+Student&#8217;s list displayed will be sorted base on name.</p>
+</li>
+<li>
+<p>'sort sg'<br>
+Student&#8217;s list displayed will be sorted base on grade.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-client-code-edit-code-since-v1-3"><a class="link" href="#editing-a-client-code-edit-code-since-v1-3">3.5. Editing a client : <code>edit</code> {Since v1.3}</a></h3>
+<div class="paragraph">
+<p>Edits an existing student in the address book.<br>
+Format: <code>edit INDEX c/s [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
+Alias Format: <code>e INDEX c/s  [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an existing tutor in the address book.<br>
+Format: <code>edit INDEX c/t [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
+Alias Format: <code>e INDEX c/t  [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -245,20 +496,28 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>edit 1 c/s  p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of the 1st student to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>e 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>e 2 c/s n/Betsy Crower t/</code><br>
+Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all existing tags.</p>
+</li>
+<li>
+<p><code>edit 1 c/t  p/93213456 e/doe@example.com</code><br>
+Edits the phone number and email address of the 1st tutor to be <code>93213456</code> and <code>doe@example.com</code> respectively.</p>
+</li>
+<li>
+<p><code>e 2 c/t n/Beatty Crower t/</code><br>
+Edits the name of the 2nd tutor to be <code>Beatty Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-code-find-code"><a class="link" href="#locating-persons-code-find-code">3.6. Locating persons: <code>find</code></a></h3>
+<h3 id="locating-persons-code-find-code-since-v1-3"><a class="link" href="#locating-persons-code-find-code-since-v1-3">3.6. Locating persons: <code>find</code> {Since v1.3}</a></h3>
 <div class="paragraph">
-<p>Finds persons that contain any of the given keywords.<br>
+<p>Finds clients that contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="paragraph">
@@ -275,13 +534,13 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
 </li>
 <li>
-<p>Not only the name is searched, but all the fields of a person is searched.</p>
+<p>Not only the name is searched, but all the fields of a client is searched.</p>
 </li>
 <li>
 <p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Clients matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -298,46 +557,49 @@ Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
 <p><code>f Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+Returns any client having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 <li>
 <p><code>f 96528541</code><br>
-Returns any person having phone number <code>96528541</code></p>
+Returns any client having phone number <code>96528541</code></p>
 </li>
 <li>
 <p><code>f blk</code><br>
-Returns any person having keyword <code>blk</code></p>
+Returns any client having keyword <code>blk</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-potential-clients-code-match-code"><a class="link" href="#matching-potential-clients-code-match-code">3.7. Matching potential clients: <code>match</code></a></h3>
+<h3 id="matching-potential-clients-code-match-code-since-v1-3"><a class="link" href="#matching-potential-clients-code-match-code-since-v1-3">3.7. Matching potential clients: <code>match</code> {Since v1.3}</a></h3>
 <div class="paragraph">
-<p>Matches any potential clients according to data input<br>
-Format: <code>match NAME</code></p>
+<p>Matches potential tutors to selected student based on INDEX<br>
+Format: <code>match INDEX c/s</code>
+Alias Format: <code>m INDEX c/s</code></p>
 </div>
 <div class="paragraph">
-<p>Alias Format: <code>m NAME</code></p>
+<p>Matches potential students to selected tutor based on INDEX+
+Format: <code>match INDEX c/t</code>
+Alias Format: <code>m INDEX c/t</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>Matches the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Only the first name entered will be matched. if 2 names are entered only the first name will be matched. e.g. <code>Hans Bo</code> will return result based on <code>Hans</code></p>
+<p>The match is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>Only the name can be used for match function.</p>
+<p>Clients will be matched based on subject, grade or location.</p>
 </li>
 <li>
 <p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Only clients that fit all the data fields will be listed. (i.e. <code>AND</code> search).</p>
+<p>Only clients that have any matches based on subject, grade or location will be displayed.</p>
 </li>
 </ul>
 </div>
@@ -349,27 +611,37 @@ Format: <code>match NAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>match John</code><br>
-If John is a tutor finding students that are staying in WEST and is looking for sec4 chemistry, then <code>match John</code> will return a list of students that are staying in the WEST and is currently looking for sec4 chemistry tutor.</p>
+<p>`match 1 c/t<br>
+At index 1 of tutor&#8217;s list, John is a tutor finding students that are staying in west and is looking for s4 chemistry. This command will return a list of students that are staying in the west or s4 or Chemistry.</p>
+</li>
+<li>
+<p>`match 1 c/s<br>
+At index 1 of student&#8217;s list, Jim is a student who requires tutors that are staying in west and teaching s4 chemistry. This command will return a list of tutors that are staying in the west or teaching s4 or teaching Chemistry.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.8. Deleting a person : <code>delete</code></a></h3>
+<h3 id="deleting-a-client-code-delete-code-since-v1-3"><a class="link" href="#deleting-a-client-code-delete-code-since-v1-3">3.8. Deleting a client : <code>delete</code> {Since v1.3}</a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Deletes the specified tutor from the address book.<br>
+Format: <code>delete INDEX c/t</code>
+Alias Format: <code>d INDEX c/t</code></p>
 </div>
 <div class="paragraph">
-<p>Alias Format: <code>d INDEX</code></p>
+<p>Deletes the specified student from the address book.<br>
+Format: <code>delete INDEX c/s</code>
+Alias Format: <code>d INDEX c/s</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>Deletes the client at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>'c/t' and 'c/s' refers to tutor&#8217;s category respectively.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -388,63 +660,24 @@ Format: <code>delete INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<code>delete 2 c/s</code><br>
+Deletes the 2nd student in the student&#8217;s list from TuitionCor.</p>
 </li>
-<li>
-<p><code>find Betsy</code><br>
-<code>d 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Alias Format: <code>s INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+<code>delete 2 c/t</code><br>
+Deletes the 2nd tutor in the tutor&#8217;s list from TuitionCor.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
-<code>s 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+<code>d 1 c/t</code><br>
+Deletes the 1st person in the tutor&#8217;s list based the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -468,7 +701,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -516,7 +749,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -551,7 +784,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.12. Clearing all entries : <code>clear</code> {Since v1.0}</a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
@@ -561,7 +794,7 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.13. Exiting the program : <code>exit</code> {Since v1.0}</a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -571,14 +804,14 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -657,6 +890,10 @@ Alias: <code>u</code></p>
 <p><strong>Redo</strong> : <code>redo</code><br>
 Alias: <code>r</code></p>
 </li>
+<li>
+<p><strong>Sort</strong> : <code>sort</code><br>
+Alias: <code>so</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -664,7 +901,7 @@ Alias: <code>r</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-23 09:19:38 UTC
+Last updated 2018-03-30 18:09:28 UTC
 </div>
 </div>
 </body>
