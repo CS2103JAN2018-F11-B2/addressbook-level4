@@ -63,6 +63,72 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
+<p>By default, upon launching TuitionCor you will be shown the active client list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Active client list contains two separate list. Clients shown here are those who looking for students or tutors here.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The list on the left represents the student&#8217;s list where you can view information regarding students who are looking for tutors.</p>
+</li>
+<li>
+<p>The list on the right represents the tutor&#8217;s list where you can view information regarding tutors who are looking for students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Closed client list contains two separate list. Clients shown here are those who are no longer looking for students or tutors.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The list on the left represents the student&#8217;s list where you can view information regarding closed students who are no longer looking for tutors.</p>
+</li>
+<li>
+<p>The list on the right represents the tutor&#8217;s list where you can view information regarding closed tutors who are no longer looking for students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You can easily toggle between the closed and active client&#8217;s list by command word <code>switch</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Commands available in active client&#8217;s list:<br>
+<code>addclient</code> <code>clear</code> <code>close</code> <code>delete</code> <code>edit</code> <code>exit</code> <code>find</code> <code>help</code> <code>history</code> <code>list</code> <code>match</code> <code>redo</code> <code>undo</code> <code>remove</code> <code>sort</code> <code>switch</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Commands available in closed client&#8217;s list:<br>
+<code>clear</code> <code>exit</code> <code>find</code> <code>help</code> <code>history</code> <code>list</code> <code>redo</code> <code>undo</code> <code>restore</code> <code>switch</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
@@ -74,7 +140,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>addclient</code></strong><code>c/s n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Urgent</code> l/north g/s4 s/math : adds a contact named <code>John Doe</code> to TuitionCor.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -102,11 +168,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <ul>
 <li>
 <p>In v1.2:</p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -114,17 +175,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>In v1.3:</p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -141,17 +194,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Coming in v1.4:</p>
 </li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
+<li>
+<p>In v1.4:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -161,15 +206,31 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <li>
 <p>The ranking system works according to the number of matched attributes.</p>
 </li>
+<li>
+<p>The matched attributes will be highlighted in orange.</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p>Close function and switch function which allows user to close a particular student or tutor.</p>
+<p>Close and restore command which allows user to close or restore a particular student or tutor .</p>
 <div class="ulist">
 <ul>
 <li>
 <p>This allows user to close a tutor of student upon successful matching which will be stored in a closed tutor&#8217;s or student&#8217;s list for future reference.</p>
+</li>
+<li>
+<p>This also allows user to restore a client from the closed list to active list if the client were to become active again.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Switch command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows user to toggle between active list and closed list.</p>
 </li>
 </ul>
 </div>
@@ -177,19 +238,21 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <li>
 <p>Enhance grade, subject and location to support mutiple field.</p>
 </li>
-</ul>
-</div>
-</div>
-</div>
+<li>
+<p>Remove function to remove the specified subject.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Coming in v1.5:</p>
+<p>This allows the user to remove the specified subject from the client instead of having to type out all the remaining subjects in edit. This is under the consideration that the desired subject of the student would often change as he find&#8217;s a tutor.</p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Coming in v1.5:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -197,17 +260,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>Coming in v2.0:</p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -232,7 +287,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
-</div>
+</li>
+</ul>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -242,10 +298,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>There are alias for some of the commands, which helps users to save some time. e.g. for add command, you can use add n/&#8230;&#8203; or a n/&#8230;&#8203;</p>
+<p>There are alias for some of the commands, which helps users to save some time. e.g. for addclient command, you can use ac n/&#8230;&#8203; or a n/&#8230;&#8203;</p>
 </li>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addclient n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>addclient n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
@@ -314,7 +370,7 @@ User can only enter only a specific location and a specific grade for each clien
 <div class="ulist">
 <ul>
 <li>
-<p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary 1' or 'P1'.</p>
+<p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary1' or 'P1'.</p>
 </li>
 <li>
 <p>LEVEL available are {Kindergarten, Primary, Secondary, Tertiary, University}. Alias LEVEL are {K,P,S,J,U} respectively.</p>
@@ -344,6 +400,16 @@ User can only enter only a specific location and a specific grade for each clien
 </ul>
 </div>
 </li>
+<li>
+<p>Subject are split based on black space. Hence a single subject has to be typed without any space.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: "chinese studies" would be treated as two separate subject "chinese" and "studies" by other commands. Hence it should be typed without a blank space such as "chineseStudies".</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -354,10 +420,10 @@ User can only enter only a specific location and a specific grade for each clien
 <div class="ulist">
 <ul>
 <li>
-<p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> t/urgent l/north g/p1 s/math</p>
+<p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/urgent l/north g/p1 s/math</code></p>
 </li>
 <li>
-<p>`ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary 1 s/math</p>
+<p><code>ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary 1 s/math</code></p>
 </li>
 </ul>
 </div>
@@ -376,87 +442,185 @@ Format: <code>list</code></p>
 <h3 id="sorting-a-client-sort-since-v1-3"><a class="link" href="#sorting-a-client-sort-since-v1-3">3.4. Sorting a client: 'sort' {Since v1.3}</a></h3>
 <div class="paragraph">
 <p>Sorting tutor&#8217;s list based on name<br>
-Format: 'sort tn'
-Alias Format: 'so tn'</p>
+Format: <code>sort n c/t</code><br>
+Alias Format: <code>so n c/t</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting tutor&#8217;s list based on location<br>
-Format: 'sort tl'
-Alias Format: 'so tl'</p>
+Format: <code>sort l c/t</code><br>
+Alias Format: <code>so l c/t</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting tutor&#8217;s list based on grade<br>
-Format: 'sort tg'
-Alias Format: 'so tg'</p>
+Format: <code>sort g c/t</code><br>
+Alias Format: <code>so g c/t</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting tutor&#8217;s list based on subject<br>
-Format: 'sort ts'
-Alias Format: 'so ts'</p>
+Format: <code>sort s c/t</code><br>
+Alias Format: <code>so s c/t</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting student&#8217;s list based on name<br>
-Format: 'sort sn'
-Alias Format: 'so sn'</p>
+Format: <code>sort n c/s</code><br>
+Alias Format: <code>so n c/s</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting student&#8217;s list based on location<br>
-Format: 'sort sl'
-Alias Format: 'so sl'</p>
+Format: <code>sort l c/s</code><br>
+Alias Format: <code>so l c/s</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting student&#8217;s list based on grade<br>
-Format: 'sort sg'
-Alias Format: 'so sg'</p>
+Format: <code>sort g c/s</code><br>
+Alias Format: <code>so g c/s</code></p>
 </div>
 <div class="paragraph">
 <p>Sorting student&#8217;s list based on subject<br>
-Format: 'sort ss'
-Alias Format: 'so ss'</p>
+Format: <code>sort s c/s</code><br>
+Alias Format: `so s c/s'</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>*Sorts the client based on the selected list, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.
-*Sorting by name, grade and subjects are based on alphabetical order.
-*Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
+<p>*Sorts the client based on the selected category, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.</p>
+</div>
+<div class="paragraph">
+<p>*Sorting by name, grade and subjects are based on alphabetical order.</p>
+</div>
+<div class="paragraph">
+<p>*Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* 'sort tl'<br>
-Tutor&#8217;s list displayed will be sorted base on location.
-* 'sort ts'<br>
-Tutor&#8217;s list displayed will be sorted base on subject.
-* 'sort tn'<br>
-Tutor&#8217;s list displayed will be sorted base on name.
-* 'sort tg'<br>
-Tutor&#8217;s list displayed will be sorted base on grade.</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>'sort sl'<br>
+<p><code>sort l c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on location.</p>
+</li>
+<li>
+<p><code>sort s c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on subject.</p>
+</li>
+<li>
+<p><code>sort n c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on name.</p>
+</li>
+<li>
+<p><code>sort g c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on grade.</p>
+</li>
+<li>
+<p><code>sort l c/s</code><br>
 Student&#8217;s list displayed will be sorted base on location.</p>
 </li>
 <li>
-<p>'sort ss'<br>
+<p><code>sort s c/s</code><br>
 Student&#8217;s list displayed will be sorted base on subject.</p>
 </li>
 <li>
-<p>'sort sn'<br>
+<p><code>sort n c/s</code><br>
 Student&#8217;s list displayed will be sorted base on name.</p>
 </li>
 <li>
-<p>'sort sg'<br>
+<p><code>sort g c/s</code><br>
 Student&#8217;s list displayed will be sorted base on grade.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-client-code-edit-code-since-v1-3"><a class="link" href="#editing-a-client-code-edit-code-since-v1-3">3.5. Editing a client : <code>edit</code> {Since v1.3}</a></h3>
+<h3 id="switching-between-active-and-closed-client-s-list-code-switch-code-since-v1-4"><a class="link" href="#switching-between-active-and-closed-client-s-list-code-switch-code-since-v1-4">3.5. Switching between active and closed client&#8217;s list : <code>switch</code> {Since v1.4}</a></h3>
+<div class="paragraph">
+<p>Switch the display between active and closed client&#8217;s list.<br>
+Format: <code>switch</code><br>
+Alias Format: <code>sw</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-a-client-code-close-code-since-v1-4"><a class="link" href="#closing-a-client-code-close-code-since-v1-4">3.6. Closing a client : <code>close</code> {Since v1.4}</a></h3>
+<div class="paragraph">
+<p>Close an existing and active student in active student&#8217;s list.<br>
+Format: <code>close INDEX c/s</code><br>
+Alias Format: <code>cs INDEX c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Close an existing and active tutor in active student&#8217;s list.<br>
+Format: <code>close INDEX c/t</code><br>
+Alias Format: <code>cs INDEX c/t</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is only available when viewing the active client&#8217;s list. Use command word <code>switch</code> to toggle from closed list to active list.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Close the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Closed student or tutor will be removed from the active list. They can now be found in the closed list which is accessible by command word <code>switch</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="restoring-a-client-code-restore-code-since-v1-4"><a class="link" href="#restoring-a-client-code-restore-code-since-v1-4">3.7. Restoring a client : <code>restore</code> {Since v1.4}</a></h3>
+<div class="paragraph">
+<p>Restore an existing and closed student in the closed student&#8217;s list.<br>
+Format: <code>restore INDEX c/s</code><br>
+Alias Format: <code>res INDEX c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Restore an existing and closed tutor in the closed tutor&#8217;s list.<br>
+Format: <code>restore INDEX c/t</code><br>
+Alias Format: <code>res INDEX c/t</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is only available when viewing the closed client&#8217;s list. Use command word <code>switch</code> to toggle from closed list to active list.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Restore the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Restored student or tutor will be removed from the closed list. They can now be found in the active list which is accessible by command word <code>switch</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-client-code-edit-code-since-v1-3"><a class="link" href="#editing-a-client-code-edit-code-since-v1-3">3.8. Editing a client : <code>edit</code> {Since v1.3}</a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the address book.<br>
 Format: <code>edit INDEX c/s [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
@@ -515,7 +679,58 @@ Edits the name of the 2nd tutor to be <code>Beatty Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-code-find-code-since-v1-3"><a class="link" href="#locating-persons-code-find-code-since-v1-3">3.6. Locating persons: <code>find</code> {Since v1.3}</a></h3>
+<h3 id="remove-a-subject-of-a-client-code-remove-code-since-v1-4"><a class="link" href="#remove-a-subject-of-a-client-code-remove-code-since-v1-4">3.9. Remove a subject of a client : <code>remove</code> {Since v1.4}</a></h3>
+<div class="paragraph">
+<p>Removes the specific subject from an existing student in the address book.<br>
+Format: <code>remove INDEX c/s s/SUBJECT</code>
+Alias Format: <code>e INDEX c/s s/SUBJECT</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an existing tutor in the address book.<br>
+Format: <code>edit INDEX c/t s/SUBJECT</code>
+Alias Format: <code>e INDEX c/t s/SUBJECT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the specified subject from the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The provided subject has to be a single word without spacing or special characters.</p>
+</li>
+<li>
+<p>If the subject exist (it matches one of the subjects in the specified client&#8217;s Subject field) it would be removed.</p>
+</li>
+<li>
+<p>A client cannot have an empty subject field. Clients with only one subject left should be deleted or closed instead</p>
+</li>
+<li>
+<p>The specified subject has to be exact with the subjects of the specified client. Partial words like typing "math" in attempt to remove "mathematics" would not work.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>remove 1 c/s s/math</code><br>
+Removes the "math" subject from the 1st student.</p>
+</li>
+<li>
+<p><code>r 2 c/t s/physics</code><br>
+Removes the "physics" subject from the 2nd tutor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-clients-code-find-code-since-v1-3"><a class="link" href="#locating-clients-code-find-code-since-v1-3">3.10. Locating clients: <code>find</code> {Since v1.3}</a></h3>
 <div class="paragraph">
 <p>Finds clients that contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -571,7 +786,7 @@ Returns any client having keyword <code>blk</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-potential-clients-code-match-code-since-v1-3"><a class="link" href="#matching-potential-clients-code-match-code-since-v1-3">3.7. Matching potential clients: <code>match</code> {Since v1.3}</a></h3>
+<h3 id="matching-potential-clients-code-match-code-since-v1-3"><a class="link" href="#matching-potential-clients-code-match-code-since-v1-3">3.11. Matching potential clients: <code>match</code> {Since v1.3}</a></h3>
 <div class="paragraph">
 <p>Matches potential tutors to selected student based on INDEX<br>
 Format: <code>match INDEX c/s</code>
@@ -611,25 +826,25 @@ Alias Format: <code>m INDEX c/t</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>`match 1 c/t<br>
+<p><code>match 1 c/t</code><br>
 At index 1 of tutor&#8217;s list, John is a tutor finding students that are staying in west and is looking for s4 chemistry. This command will return a list of students that are staying in the west or s4 or Chemistry.</p>
 </li>
 <li>
-<p>`match 1 c/s<br>
+<p><code>match 1 c/s</code><br>
 At index 1 of student&#8217;s list, Jim is a student who requires tutors that are staying in west and teaching s4 chemistry. This command will return a list of tutors that are staying in the west or teaching s4 or teaching Chemistry.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-client-code-delete-code-since-v1-3"><a class="link" href="#deleting-a-client-code-delete-code-since-v1-3">3.8. Deleting a client : <code>delete</code> {Since v1.3}</a></h3>
+<h3 id="deleting-a-client-code-delete-code-since-v1-3"><a class="link" href="#deleting-a-client-code-delete-code-since-v1-3">3.12. Deleting a client : <code>delete</code> {Since v1.3}</a></h3>
 <div class="paragraph">
-<p>Deletes the specified tutor from the address book.<br>
+<p>Deletes the specified tutor from TuitionCor.<br>
 Format: <code>delete INDEX c/t</code>
 Alias Format: <code>d INDEX c/t</code></p>
 </div>
 <div class="paragraph">
-<p>Deletes the specified student from the address book.<br>
+<p>Deletes the specified student from TuitionCor.<br>
 Format: <code>delete INDEX c/s</code>
 Alias Format: <code>d INDEX c/s</code></p>
 </div>
@@ -677,7 +892,7 @@ Deletes the 1st person in the tutor&#8217;s list based the results of the <code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -701,9 +916,9 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores TuitionCor to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="paragraph">
@@ -717,7 +932,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the TuitionCor&#8217;s content (<code>addclient</code>, <code>delete</code>, <code>edit</code> , <code>close</code> , <code>restore</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -749,7 +964,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -784,9 +999,9 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.12. Clearing all entries : <code>clear</code> {Since v1.0}</a></h3>
+<h3 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.16. Clearing all entries : <code>clear</code> {Since v1.0}</a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Clears all entries from TuitionCor.<br>
 Format: <code>clear</code></p>
 </div>
 <div class="paragraph">
@@ -794,7 +1009,7 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.13. Exiting the program : <code>exit</code> {Since v1.0}</a></h3>
+<h3 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.17. Exiting the program : <code>exit</code> {Since v1.0}</a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -804,14 +1019,14 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>TuitionCor data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -823,7 +1038,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TuitionCor folder.</p>
 </div>
 </div>
 </div>
@@ -857,6 +1072,11 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code><br>
 Alias: <code>e</code></p>
 </li>
 <li>
+<p><strong>Remove</strong> : <code>remove INDEX c/CATEGORY s/SUBJECT</code><br>
+e.g. <code>remove 1 c/s s/math</code>
+Alias: <code>r</code></p>
+</li>
+<li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>find James Jake</code><br>
 Alias: <code>f</code></p>
@@ -867,16 +1087,30 @@ e.g. <code>match James</code><br>
 Alias: <code>m</code></p>
 </li>
 <li>
+<p><strong>Sort</strong> : <code>sort</code><br>
+eg. <code>sort TYPE c/s</code><br>
+Alias: <code>so</code></p>
+</li>
+<li>
+<p><strong>Close</strong> : <code>close</code><br>
+eg. <code>close INDEX c/s</code><br>
+Alias: <code>cs</code></p>
+</li>
+<li>
+<p><strong>Restore</strong> : <code>restore</code><br>
+eg. <code>restore INDEX c/s</code><br>
+Alias: <code>res</code></p>
+</li>
+<li>
+<p><strong>Switch</strong> : <code>switch</code><br>
+Alias: <code>sw</code></p>
+</li>
+<li>
 <p><strong>List</strong> : <code>list</code><br>
 Alias: <code>l</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code><br>
-Alias: <code>s</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code><br>
@@ -890,10 +1124,6 @@ Alias: <code>u</code></p>
 <p><strong>Redo</strong> : <code>redo</code><br>
 Alias: <code>r</code></p>
 </li>
-<li>
-<p><strong>Sort</strong> : <code>sort</code><br>
-Alias: <code>so</code></p>
-</li>
 </ul>
 </div>
 </div>
@@ -901,7 +1131,7 @@ Alias: <code>so</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 16:33:58 UTC
+Last updated 2018-04-05 16:52:40 UTC
 </div>
 </div>
 </body>

@@ -1004,7 +1004,13 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Lets say John&#8217;s Index number if 1.</p>
 </div>
 <div class="paragraph">
-<p>Keying in <code>match 1 c/t</code> will return a list of students that are registered in TuitionCor, which stays in the WEST, and are looking for sec4 math tutors.</p>
+<p>Keying in <code>match 1 c/t</code> will return a list of students that are registered in TuitionCor, which either stays in the WEST, or are looking for sec4 math tutors.</p>
+</div>
+<div class="paragraph">
+<p>Match function will list out the potential students for John with the highest match (all attributes matched) on top of the list.</p>
+</div>
+<div class="paragraph">
+<p>All the matched attributes are highlighted in orange.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1141,19 +1147,6 @@ The detailed code is shown below:</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="future-improvements"><a class="link" href="#future-improvements">3.2.3. Future Improvements</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Currently, Match function lists all the clients that have one or more similar attributes without ranking it from the highest match to the lowest match. Future implementation should rank the list from the highest match to the lowest match.</p>
-</li>
-<li>
-<p>Currently, there is no colour mapping to the <code>location</code>, <code>grade</code> and <code>subject</code> attributes. future implmentation could colour map them to make them more user friendly.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="sort-feature"><a class="link" href="#sort-feature">3.3. Sort feature</a></h3>
@@ -1206,7 +1199,7 @@ The detailed code is shown below:</p>
 </div>
 <div class="paragraph">
 <p>When the user wants to sort the specific list according to his/her needs, SortCommandParser will parse the user input and decide which type of SortCommand to invoke.
-An example of the input required "sort tl" which sorts tutor&#8217;s list by location.</p>
+An example of the input required "sort l c/t" which sorts tutor&#8217;s list by location.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1231,7 +1224,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </table>
 </div>
 <div class="paragraph">
-<p>A sequence diagram is shown below to show the current design when user input "sort tl".</p>
+<p>A sequence diagram is shown below to show the current design when user input "sort l c/t".</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1278,7 +1271,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> SortCommandParser parse one single string user input. Eg. 'sort tl' which sort tutor list by location.</p>
+<p><strong>Alternative 1 (current choice):</strong> SortCommandParser parse one single string user input. Eg. 'sort l c/t' which sort tutor list by location.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1305,6 +1298,332 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.3.2. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The close command allows users to remove a particular client from the active client&#8217;s list and stores it in the closed client&#8217;s list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CloseCommand extends UndoableCommand and this is a undoable command. It overwrites executeUndoableCommand in abstract class UndoableCommand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It will first remove the the selected client from the active client list. If this particular client is not found, a PersonNotFoundException will be thrown.</p>
+</li>
+<li>
+<p>After which, the particular removed client will be added to the closed client list. An AssertionError will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the active client list in TuitionCor.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The code is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() {
+        requireNonNull(clientToClose);
+        <span class="keyword">try</span> {
+            model.deleteClient(clientToClose, category);
+        } <span class="keyword">catch</span> (PersonNotFoundException pnfe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target client cannot be missing</span><span class="delimiter">&quot;</span></span>);
+        }
+
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (category.isStudent()) {
+                model.addClosedStudent(clientToClose);
+            } <span class="keyword">else</span> {
+                model.addClosedTutor(clientToClose);
+            }
+        } <span class="keyword">catch</span> (DuplicatePersonException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The client should not be duplicated</span><span class="delimiter">&quot;</span></span>);
+        }
+
+        <span class="keyword">if</span> (category.isStudent()) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_CLOSE_STUDENT_SUCCESS, clientToClose));
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_CLOSE_TUTOR_SUCCESS, clientToClose));
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A sequence diagram is shown below to show the current design when a user input "close 1 c/s"</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CloseSequenceDiagram.PNG" alt="CloseSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.3.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-the-close-command"><a class="link" href="#aspect-implementation-of-the-close-command">Aspect: Implementation of the close command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Current implementation calls model component twice to execute deleteClient and addClosedStudent or addClosedTutor.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This ensures that deleteClient is able to execute successfully before addClosedStudent is executed.</p>
+</li>
+<li>
+<p>Cons: This reduces code efficiency.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement a closeClient method in model to execute deleteClient and addClosedStudent or addClosedTutor.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Model can be called once.</p>
+</li>
+<li>
+<p>Cons: This reduces code readability.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.3.4. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The restore command allows users to remove a particular client from the closed client&#8217;s list and restore it back to the active client&#8217;s list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RestoreCommand extends UndoableCommand and this is a undoable command. It overwrites executeUndoableCommand in abstract class UndoableCommand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It will first remove the the selected client from the closed client list. If this particular client is not found, a PersonNotFoundException will be thrown.</p>
+</li>
+<li>
+<p>After which, the particular removed client will be added to the active client list. An AssertionError will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the active client list in TuitionCor.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>This design is very similar to close command&#8217;s design.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The code is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() {
+        requireNonNull(clientToRestore);
+        <span class="keyword">try</span> {
+            model.deleteClosedClient(clientToRestore, category);
+        } <span class="keyword">catch</span> (PersonNotFoundException pnfe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target client cannot be missing</span><span class="delimiter">&quot;</span></span>);
+        }
+
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (category.isStudent()) {
+                model.addStudent(clientToRestore);
+            } <span class="keyword">else</span> {
+                model.addTutor(clientToRestore);
+            }
+        } <span class="keyword">catch</span> (DuplicatePersonException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The client should not be duplicated</span><span class="delimiter">&quot;</span></span>);
+        }
+
+        <span class="keyword">if</span> (category.isStudent()) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_RESTORE_STUDENT_SUCCESS, clientToRestore));
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_CLOSE_TUTOR_SUCCESS, clientToRestore));
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A sequence diagram is shown below to show the current design when a user input "restore 1 c/s"</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RestoreSequenceDiagram.PNG" alt="RestoreSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.3.5. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends Command.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch command overrides execute method in Command with the following code:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ClientListSwitchEvent());
+        listPanelController.switchDisplay();
+        <span class="keyword">if</span> (listPanelController.getCurrentListDisplayed() == ListPanelController.DisplayType.closedList) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + MESSAGE_CLOSED_DISPLAY_LIST);
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + MESSAGE_ACTIVE_DISPLAY_LIST);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A ListPanelController is used to keep track of the currently displayed list and switch the list when called.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> switchDisplay() {
+        <span class="keyword">switch</span> (currentlyDisplayed) {
+        <span class="keyword">case</span> activeList:
+            currentlyDisplayed = DisplayType.closedList;
+            <span class="keyword">break</span>;
+
+        <span class="keyword">case</span> closedList:
+            currentlyDisplayed = DisplayType.activeList;
+            <span class="keyword">break</span>;
+
+        <span class="keyword">default</span>:
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">This should not be possible.</span><span class="delimiter">&quot;</span></span>);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch command uses ClientListSwitchEvent to raise an event whenever the user wants to toggle the list displayed.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">   <span class="directive">public</span> <span class="type">class</span> <span class="class">ClientListSwitchEvent</span> <span class="directive">extends</span> BaseEvent {
+
+       <span class="annotation">@Override</span>
+       <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+           <span class="keyword">return</span> <span class="local-variable">this</span>.getClass().getSimpleName();
+       }
+   }
+[source,java]</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When a event is raise it&#8217;s handled by handleClientListSwitchEvent which resides in both StudentListPanel and TutorListPanel.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleClientListSwitchEvent(ClientListSwitchEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        switchListDisplay();
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This will allow StudentListPanel and TutorListPanel to be updated accordingly based on the current list that is on display.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> switchListDisplay() {
+        ListPanelController listPanelController = ListPanelController.getInstance();
+        <span class="keyword">switch</span> (listPanelController.getCurrentListDisplayed()) {
+        <span class="keyword">case</span> activeList:
+            setConnectionsForClosedStudents();
+            <span class="keyword">break</span>;
+
+        <span class="keyword">case</span> closedList:
+            setConnectionsForStudents();
+            <span class="keyword">break</span>;
+
+        <span class="keyword">default</span>:
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">This should not be possible.</span><span class="delimiter">&quot;</span></span>);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A sequence diagram is shown below when switch command is entered by user.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SwitchSequenceDiagram.PNG" alt="SwitchSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.3.6. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-switch-command"><a class="link" href="#aspect-implementation-of-switch-command">Aspect: Implementation of switch command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Raise new event to indicate switch event.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduce direct coupling between components StudentListPanel and TutorListPanel with SwitchCommand</p>
+</li>
+<li>
+<p>Cons: Code might be harder to understand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Call a method in StudentListPanel and TutorListPanel to indicate switch event.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code is easier to understand.</p>
+</li>
+<li>
+<p>Cons: Direct coupling increase and changing a part might affect another component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2492,100 +2811,100 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <td class="tableblock halign-left valign-top"><p class="tableblock">clients will have more choice to choose from</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily remove the subjects of the students when they find tutors</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">search multiple tags</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">narrow down the search to clients that fit all the different tags searched.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily delete all students/tutors</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save time manually deleting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get a list of all tutors that corresponds to a students requirements</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">give students more choices on which tutor they want</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get a list of all students that corresponds to a tutor&#8217;s requirements</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">give tutors more choices on which students they want</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">automatically update the year of all students</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">need not manually change all the information during new year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">update which time slot the tutor is already working</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">plan their timetable without any clash in timing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have a ranking on how good the tutor is</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">understand which tutor the user should recommend more</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">highlight urgent tuition requests</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set reminder to place more attention on these assignments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist certain tutors or students</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make sure the user will not accept their assignments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have the option to customise the font size and colour</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make changes to the appearance to suit the user&#8217;s preference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have the option to customise the user&#8217;s background</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make the application more appealing to the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">email the contacts in the application</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save the trouble from opening another web-browser or email application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of whether the tutors have paid their agent fee</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track and remind those who have not paid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">directly navigate between contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save the trouble from returning to the main page every time</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep a record of how much the students improve</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how good the tutor is</p></td>
 </tr>
 </tbody>
 </table>
@@ -2653,7 +2972,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User types “/sort sl” or “/sort tl” in to the command line.</p>
+<p>User types “sort l c/t” or “sort l c/s” in to the command line.</p>
 </li>
 <li>
 <p>TuitionCor will return either a list of students or tutors with respect to the command entered sorted based on their locality in alphabetical order.</p>
@@ -2706,7 +3025,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User types “/sort sg” or “/sort tg” in to the command line.</p>
+<p>User types “sort g c/t” or “sort g c/s” in to the command line.</p>
 </li>
 <li>
 <p>TuitionCor will return either a list of students or tutors with respect to the command entered sorted based on their grade in ascending order of seniority.</p>
@@ -2759,7 +3078,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User types “/sort sn” or “/sort tn” in to the command line.</p>
+<p>User types “sort n c/t” or “sort n c/s” in to the command line.</p>
 </li>
 <li>
 <p>TuitionCor will return either a list of students or tutors with respect to the command entered sorted based on their name in alphabetical order.</p>
@@ -2812,7 +3131,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User types “/sort ss” or “/sort ts” in to the command line.</p>
+<p>User types “sort s c/t” or “sort s c/s” in to the command line.</p>
 </li>
 <li>
 <p>TuitionCor will return either a list of students or tutors with respect to the command entered sorted based on their subject in alphabetical order.</p>
@@ -3252,8 +3571,8 @@ This allows the user be able to search for anything related to the person he wis
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>UI Changes<br>
-The UI would be edited to suit TuitionCor&#8217;s purpose by showing the Student and Tutor separately</p>
+<p>Close, restore and switch function<br>
+This would allow user to close a client to the closed list or restore a client to the active list. Switch allows client to toggle between closed list and active list.</p>
 </li>
 </ol>
 </div>
@@ -3277,7 +3596,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 16:33:58 UTC
+Last updated 2018-04-05 16:52:40 UTC
 </div>
 </div>
 </body>
