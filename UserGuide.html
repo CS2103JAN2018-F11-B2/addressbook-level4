@@ -58,12 +58,12 @@ This app will not work with earlier versions of Java 8.
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/Ui.PNG" alt="Ui" width="790">
 </div>
 </div>
 </li>
 <li>
-<p>By default, upon launching TuitionCor you will be shown the active client list.</p>
+<p>By default, upon launching TuitionCor you will be shown the active client list. If you are a new user, the active client and closed list will be filled with sample students and tutors.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -149,6 +149,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>exit</code></strong> : exits the app</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>Some pointers<br>
+Duplicates of similar students in the student&#8217;s list is not allowed. Vice versa for tutor&#8217;s list. However, duplicate contacts between student&#8217;s and tutor&#8217;s list is allowed as it&#8217;s possible for a tutor to also be a student.<br></p>
+<div class="paragraph">
+<p>A duplication of student or tutor happens when they do not have at least one difference in the following fields: {Name, Address, Phone Number, Email}.</p>
 </div>
 </li>
 <li>
@@ -252,11 +259,24 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p>Coming in v1.5:</p>
+<p>In v1.5:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrate all features together.</p>
+<p>Issues received in v1.4 were carefully reviewed and relevant changes were made. We thank users for your generous feedback.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bugs found were fixed.</p>
+</li>
+<li>
+<p>Find function now works normally with same grades of different format. Eg: (P2 and Primary2).</p>
+</li>
+<li>
+<p>Find function now supports multiple grade fields.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -266,7 +286,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Auto match function where.</p>
+<p>Auto match function.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -281,6 +301,29 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <ul>
 <li>
 <p>Whenever a user or student sign up on the online platform, their information will automatically be added into TuitionCor database.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Auto close function.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows the application to auto delete a client from the closed list after a certain period.</p>
+</li>
+<li>
+<p>The grace period for auto deletion can be predetermined by the user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Addition grade fields to be added.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Polytechnic and ITE.</p>
 </li>
 </ul>
 </div>
@@ -350,7 +393,7 @@ A client can have any number of tags (including 0)
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-User can only enter only a specific location and a specific grade for each client. The type of location and grade accepted can be found below.
+The type of location and grade accepted can be found below.
 </td>
 </tr>
 </table>
@@ -683,12 +726,12 @@ Edits the name of the 2nd tutor to be <code>Beatty Crower</code> and clears all 
 <div class="paragraph">
 <p>Removes the specific subject from an existing student in the address book.<br>
 Format: <code>remove INDEX c/s s/SUBJECT</code>
-Alias Format: <code>e INDEX c/s s/SUBJECT</code></p>
+Alias Format: <code>re INDEX c/s s/SUBJECT</code></p>
 </div>
 <div class="paragraph">
 <p>Edits an existing tutor in the address book.<br>
 Format: <code>edit INDEX c/t s/SUBJECT</code>
-Alias Format: <code>e INDEX c/t s/SUBJECT</code></p>
+Alias Format: <code>re INDEX c/t s/SUBJECT</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -723,7 +766,7 @@ Alias Format: <code>e INDEX c/t s/SUBJECT</code></p>
 Removes the "math" subject from the 1st student.</p>
 </li>
 <li>
-<p><code>r 2 c/t s/physics</code><br>
+<p><code>re 2 c/t s/physics</code><br>
 Removes the "physics" subject from the 2nd tutor.</p>
 </li>
 </ul>
@@ -811,10 +854,16 @@ Alias Format: <code>m INDEX c/t</code></p>
 <p>Clients will be matched based on subject, grade or location.</p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Full words of a <code>grade</code> will be matched against Alias of a <code>grade</code> e.g. <code>Primary2</code> will be matched to <code>p2</code></p>
 </li>
 <li>
 <p>Only clients that have any matches based on subject, grade or location will be displayed.</p>
+</li>
+<li>
+<p>Matched clients will be listed from the most number of matched attributes to the least number of matched attributes.</p>
+</li>
+<li>
+<p>Matched attributes will be highlighted in orange.</p>
 </li>
 </ul>
 </div>
@@ -1054,7 +1103,7 @@ Alias: <code>a</code></p>
 </li>
 <li>
 <p><strong>AddClient</strong> <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code><br>
-e.g. <code>addclient c/t n/Tutor1 p/98765432 a/Blk 10 Singapore, #01-239 e/testing@example.com t/family l/north g/pri3 s/physics</code><br>
+e.g. <code>addclient c/t n/Tutor1 p/98765432 a/Blk 10 Singapore, #01-239 e/testing@example.com t/family l/north g/p3 s/physics</code><br>
 Alias: <code>ac</code></p>
 </li>
 <li>
@@ -1074,7 +1123,7 @@ Alias: <code>e</code></p>
 <li>
 <p><strong>Remove</strong> : <code>remove INDEX c/CATEGORY s/SUBJECT</code><br>
 e.g. <code>remove 1 c/s s/math</code>
-Alias: <code>r</code></p>
+Alias: <code>re</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
@@ -1131,7 +1180,7 @@ Alias: <code>r</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 04:26:18 UTC
+Last updated 2018-04-12 17:27:01 UTC
 </div>
 </div>
 </body>
