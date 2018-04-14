@@ -48,15 +48,17 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#match-function">3.2. Match Function</a></li>
-<li><a href="#sort-feature">3.3. Sort feature</a></li>
-<li><a href="#close-feature">3.4. Close feature</a></li>
-<li><a href="#restore-feature">3.5. Restore feature</a></li>
-<li><a href="#switch-feature">3.6. Switch feature</a></li>
-<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#model">3.1. Model</a></li>
+<li><a href="#client-and-the-fields-of-client">3.2. Client and the fields of Client</a></li>
+<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
+<li><a href="#match-function">3.4. Match Function</a></li>
+<li><a href="#sort-feature">3.5. Sort feature</a></li>
+<li><a href="#close-feature">3.6. Close feature</a></li>
+<li><a href="#restore-feature">3.7. Restore feature</a></li>
+<li><a href="#switch-feature">3.8. Switch feature</a></li>
+<li><a href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -556,10 +558,55 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">2.4.1. Current Implementation</a></h4>
+</div>
+<div class="sect2">
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 10. Structure of the Storage Component</div>
+</div>
 <div class="paragraph">
-<p>The AddressBook currently stores two UniqueClientList (students and tutors) and clients that are stored in either one of them depending on whether the client&#8217;s Category is "s" for students or "t" for tutors. This is done under the consideration that a client should never be both a student and tutor.</p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>can save the Address Book data in xml format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<div class="paragraph">
+<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes some noteworthy details on how certain features are implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="model"><a class="link" href="#model">3.1. Model</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The AddressBook currently stores Clients in separate UniqueClientList (students, tutors, closedStudents, closedTutors) depending on category the Client belongs to.</p>
+</div>
+<div class="paragraph">
+<p>Due to students and tutors being stored as 2 separate UniqueClientList, commands that work on only 1 of the 2 list (eg. addclient, edit, delete etc.) would require the model to either expose 2 functions for the Command to call or to take in a Category argument which the model would then handle as shown below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -576,11 +623,11 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/SeparateFunctionForStudentTutor.png" alt="SeparateFunctionForStudentTutor" width="800">
 </div>
-<div class="title">Figure 10. Example of splitting call into 2 functions</div>
+<div class="title">Figure 11. Example of splitting call into 2 functions</div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public class updateClient(Client target, Client editedClient, Category category) {
+<pre>public class updatePerson(Client target, Client editedClient, Category category) {
     if (category.isStudent) {
         // ... work on students ...
     } else if (category.isTutor) {
@@ -594,7 +641,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">2.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-of-model"><a class="link" href="#design-considerations-of-model">3.1.2. Design Considerations of Model</a></h4>
 <div class="sect4">
 <h5 id="aspect-keeping-students-and-tutors-in-1-or-2-list"><a class="link" href="#aspect-keeping-students-and-tutors-in-1-or-2-list">Aspect: Keeping students and tutors in 1 or 2 list</a></h5>
 <div class="ulist">
@@ -664,48 +711,81 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
-<div class="imageblock">
+<h3 id="client-and-the-fields-of-client"><a class="link" href="#client-and-the-fields-of-client">3.2. Client and the fields of Client</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The Client Class extends Person that consists of 5 fields (name, phone, email, address, tags) while Client has additional 4 fields (location, grade, subject, category).</p>
+</div>
+<div class="paragraph">
+<p>All of the fields uses a specific class that takes a single String as it&#8217;s value as shown below.
+.Example of Subject field with it&#8217;s value
+image::ClientFieldExample.png[width="800"]</p>
+</div>
+<div class="paragraph">
+<p>Hence, for fields that should actually take in multiple values (eg. Subject taking in "math physics chemistry") are currently stored as a single String while operations that work on the individual keywords have to manually split them into separate keywords through String operations.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+<pre>private static Client createEditedPerson(Client personToEdit, Subject toRemove) {
+        assert personToEdit != null;
+
+        String editSubjects = personToEdit.getSubject().value;
+        ArrayList&lt;String&gt; editSubjectArray = new ArrayList&lt;&gt;(Arrays.asList(editSubjects.split(" ")));
+        editSubjectArray.remove(toRemove.value);
+
+        StringBuilder sb = new StringBuilder();
+        .....</pre>
 </div>
-<div class="title">Figure 11. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p>As you can see from this section taken from Remove Command, after getting the String of the value of Subject, it has to use String operations to split it based on whitespace and reconstruct the string again later.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>On the other hand, a client can have multiple Tags as the Tag are stored through an UniqueTagList.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-to-store-multiple-values-in-a-single-string-or-as-separate-objects-in-a-list"><a class="link" href="#aspect-to-store-multiple-values-in-a-single-string-or-as-separate-objects-in-a-list">Aspect: To store multiple values in a single String or as separate objects in a list</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p><strong>(Alternative 1 (current choice)):</strong> Store all the values as a single String and have commands that work on individual keywords split them.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Most commands simply require to read the value directly as a String and does not require to work on individual keyword. Does not require multiple types of unique list to be created for each of the field.</p>
 </li>
 <li>
-<p>can save the Address Book data in xml format and read it back.</p>
+<p>Cons: Lacks in flexibility in being able to individual values.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Alternative 2)</strong> Create a list similar to UniqueTagList for each field that requires the storage of multiple values</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for greater flexibility and the ability to sync the various existing values in the AddressBook.</p>
+</li>
+<li>
+<p>Cons: Require many lists to be stored. Whenever more fields are added in future enhancements, it could potentially require the excessive creation of a new type unique list each time.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
-<div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.1.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -858,7 +938,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -995,9 +1075,9 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="match-function"><a class="link" href="#match-function">3.2. Match Function</a></h3>
+<h3 id="match-function"><a class="link" href="#match-function">3.4. Match Function</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The match function behaves like a multi-layer find function. It helps to match clients that share one or more similar attributes.</p>
 </div>
@@ -1036,7 +1116,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="step-by-step-breakdown"><a class="link" href="#step-by-step-breakdown">3.2.2. Step by Step breakdown</a></h4>
+<h4 id="step-by-step-breakdown"><a class="link" href="#step-by-step-breakdown">3.4.2. Step by Step breakdown</a></h4>
 <div class="paragraph">
 <p>match function behaves like at double-layered find function. When a user enters <code>match 1 c/t</code>, the system will first need to extract the first tutor from the tutor&#8217;s list.</p>
 </div>
@@ -1139,7 +1219,7 @@ The detailed code is shown below:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.2.3. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-userinput"><a class="link" href="#aspect-userinput">Aspect: UserInput</a></h5>
 <div class="ulist">
@@ -1175,7 +1255,7 @@ The detailed code is shown below:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-implementations"><a class="link" href="#future-implementations">3.2.4. Future Implementations</a></h4>
+<h4 id="future-implementations"><a class="link" href="#future-implementations">3.4.4. Future Implementations</a></h4>
 <div class="sect4">
 <h5 id="optimise-match-function-to-accommodate-multiple-code-grade-code-and-code-subject-code-fields-per-client"><a class="link" href="#optimise-match-function-to-accommodate-multiple-code-grade-code-and-code-subject-code-fields-per-client">Optimise match function to accommodate multiple <code>Grade</code> and <code>Subject</code> fields per client.</a></h5>
 <div class="imageblock">
@@ -1197,9 +1277,9 @@ The detailed code is shown below:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-feature"><a class="link" href="#sort-feature">3.3. Sort feature</a></h3>
+<h3 id="sort-feature"><a class="link" href="#sort-feature">3.5. Sort feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The sort command is facilitated by a SortCommandParser which implements Parser&lt;SortCommand&gt;. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
 </div>
@@ -1351,9 +1431,9 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect2">
-<h3 id="close-feature"><a class="link" href="#close-feature">3.4. Close feature</a></h3>
+<h3 id="close-feature"><a class="link" href="#close-feature">3.6. Close feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The close command allows users to remove a particular client from the active client&#8217;s list and stores it in the closed client&#8217;s list.</p>
 </div>
@@ -1416,7 +1496,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-the-close-command"><a class="link" href="#aspect-implementation-of-the-close-command">Aspect: Implementation of the close command</a></h5>
 <div class="ulist">
@@ -1453,9 +1533,9 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect2">
-<h3 id="restore-feature"><a class="link" href="#restore-feature">3.5. Restore feature</a></h3>
+<h3 id="restore-feature"><a class="link" href="#restore-feature">3.7. Restore feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The restore command allows users to remove a particular client from the closed client&#8217;s list and restore it back to the active client&#8217;s list.</p>
 </div>
@@ -1522,9 +1602,9 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect2">
-<h3 id="switch-feature"><a class="link" href="#switch-feature">3.6. Switch feature</a></h3>
+<h3 id="switch-feature"><a class="link" href="#switch-feature">3.8. Switch feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends Command.</p>
 </div>
@@ -1649,7 +1729,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-switch-command"><a class="link" href="#aspect-implementation-of-switch-command">Aspect: Implementation of switch command</a></h5>
 <div class="ulist">
@@ -1686,20 +1766,20 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1730,7 +1810,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3728,7 +3808,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:36:52 UTC
+Last updated 2018-04-14 20:43:45 UTC
 </div>
 </div>
 </body>
