@@ -61,16 +61,6 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
@@ -91,6 +81,9 @@
 </li>
 <li>
 <p>Edited existing junit test to work on clients after changes were made to logic and model (Pull requests <a href="https://github.com/CS2103JAN2018-F11-B2/main/pull/31">#31</a>)</p>
+</li>
+<li>
+<p>Allowed for multiple subjects, grades and location to be added with regex checking for each keyword individually instead of as a whole. (Pull requests <a href="https://github.com/CS2103JAN2018-F11-B2/main/pull/89">#89</a>)</p>
 </li>
 </ul>
 </div>
@@ -129,7 +122,111 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="remove-a-subject-of-a-client-code-remove-code-since-v1-4"><a class="link" href="#remove-a-subject-of-a-client-code-remove-code-since-v1-4">Remove a subject of a client : <code>remove</code> {Since v1.4}</a></h3>
+<h3 id="adding-a-client-code-addclient-code-since-v1-2"><a class="link" href="#adding-a-client-code-addclient-code-since-v1-2">Adding a client: <code>addclient</code> {Since v1.2}</a></h3>
+<div class="paragraph">
+<p>Adds a client to TuitionCor<br>
+Format: <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
+</div>
+<div class="paragraph">
+<p>Alias Format: <code>ac c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A client can have any number of tags (including 0)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The type of location and grade accepted can be found below.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s required to indicate the category the particular client belongs to.</p>
+</li>
+<li>
+<p>Accepted case-insensitive location available for user input are {North,South,East,West,Central}. Any other type of location will be invalid.</p>
+</li>
+<li>
+<p>Accepted case-insensitive grade available for user input are as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary1' or 'P1'.</p>
+</li>
+<li>
+<p>LEVEL available are {Kindergarten, Primary, Secondary, Tertiary, University}. Alias LEVEL are {K,P,S,J,U} respectively.</p>
+</li>
+<li>
+<p>INDEX available varies differently for each Level.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Kindergarten INDEX available are {1,2,3}.</p>
+</li>
+<li>
+<p>For Primary INDEX available are {1,2,3,4,5,6}.</p>
+</li>
+<li>
+<p>For Secondary INDEX available are {1,2,3,4,5}.</p>
+</li>
+<li>
+<p>For Tertiary INDEX available are {1,2}.</p>
+</li>
+<li>
+<p>For University INDEX available are {1,2,3,4}</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Subject are split based on black space. Hence a single subject has to be typed without any space.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: "chinese studies" would be treated as two separate subject "chinese" and "studies" by other commands. Hence it should be typed without a blank space such as "chineseStudies".</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/urgent l/north g/p1 s/math</code></p>
+</li>
+<li>
+<p><code>ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary 1 s/math</code>
+=== Remove a subject of a client : <code>remove</code> {Since v1.4}</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Removes the specific subject from an existing student in the address book.<br>
 Format: <code>remove INDEX c/s s/SUBJECT</code>
@@ -322,6 +419,81 @@ Removes the "physics" subject from the 2nd tutor.</p>
 </li>
 <li>
 <p>Cons: Large number of duplicated commands.</p>
+<h3 id="use-case-remove-specific-keyword-from-client-s-subject" class="discrete">Use case: Remove specific keyword from client&#8217;s subject</h3>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list clients</p>
+</li>
+<li>
+<p>TuitionCor shows a list of clients</p>
+</li>
+<li>
+<p>User requests to remove a keyword from specific client</p>
+</li>
+<li>
+<p>TuitionCor removes the keyword from the subject field of the specified client</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. TuitionCor shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a. The given keyword does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. TuitionCor shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4b. The given keyword the last subject in the specific client.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4b1. TuitionCor shows an error message that suggest for the user to close the client instead.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -330,13 +502,45 @@ Removes the "physics" subject from the 2nd tutor.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proposed-implementations-features"><a class="link" href="#proposed-implementations-features">Proposed implementations/features</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Automatic close feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Instead of throwing an error when the user tries to remove the last subject from a client, ask the user if he would prefer to close the client. If yes, call the close function for the given client.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Function for changing the grades of the students</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All the students would promote to the next grade at the end of every year eg. from p1 to p2. This feature would allow for the user to easily change all the student&#8217;s grades at the end of each school year instead of having to manually edit their profile.</p>
+</li>
+<li>
+<p>Alternatively, if a clock/calender feature is to be implemented in the future, this function can sync with that clock/calender to automatically change the grades of all the students at the end of the school year.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 19:03:42 UTC
+Last updated 2018-04-14 14:36:52 UTC
 </div>
 </div>
 </body>

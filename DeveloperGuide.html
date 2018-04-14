@@ -2980,10 +2980,10 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list clients</p>
 </li>
 <li>
-<p>TuitionCor shows a list of persons</p>
+<p>TuitionCor shows a list of clients</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
@@ -3013,6 +3013,81 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 <ul class="none">
 <li>
 <p>3a1. TuitionCor shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-remove-specific-keyword-from-client-s-subject" class="discrete">Use case: Remove specific keyword from client&#8217;s subject</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list clients</p>
+</li>
+<li>
+<p>TuitionCor shows a list of clients</p>
+</li>
+<li>
+<p>User requests to remove a keyword from specific client</p>
+</li>
+<li>
+<p>TuitionCor removes the keyword from the subject field of the specified client</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. TuitionCor shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a. The given keyword does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. TuitionCor shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4b. The given keyword the last subject in the specific client.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4b1. TuitionCor shows an error message that suggest for the user to close the client instead.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -3653,7 +3728,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 19:03:42 UTC
+Last updated 2018-04-14 14:36:52 UTC
 </div>
 </div>
 </body>
