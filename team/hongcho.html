@@ -143,104 +143,6 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="sorting-a-client-sort-code-since-v1-3-code"><a class="link" href="#sorting-a-client-sort-code-since-v1-3-code">Sorting a client: 'sort' <code>[Since v1.3]</code></a></h3>
-<div class="paragraph">
-<p>Sorting tutor&#8217;s list based on name<br>
-Format: <code>sort n c/t</code><br>
-Alias Format: <code>so n c/t</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting tutor&#8217;s list based on location<br>
-Format: <code>sort l c/t</code><br>
-Alias Format: <code>so l c/t</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting tutor&#8217;s list based on grade<br>
-Format: <code>sort g c/t</code><br>
-Alias Format: <code>so g c/t</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting tutor&#8217;s list based on subject<br>
-Format: <code>sort s c/t</code><br>
-Alias Format: <code>so s c/t</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting student&#8217;s list based on name<br>
-Format: <code>sort n c/s</code><br>
-Alias Format: <code>so n c/s</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting student&#8217;s list based on location<br>
-Format: <code>sort l c/s</code><br>
-Alias Format: <code>so l c/s</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting student&#8217;s list based on grade<br>
-Format: <code>sort g c/s</code><br>
-Alias Format: <code>so g c/s</code></p>
-</div>
-<div class="paragraph">
-<p>Sorting student&#8217;s list based on subject<br>
-Format: <code>sort s c/s</code><br>
-Alias Format: <code>so s c/s</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>Sorts the client based on the selected category, either <code>t</code> for tutors or <code>s</code> for students based on a chosen sort type <code>n</code> for name, <code>g</code> for grade, <code>s</code> for subject and <code>l</code> for location.</p>
-</div>
-<div class="paragraph">
-<p>Sorting by name, grade, location and subjects are based on alphabetical order.<br></p>
-</div>
-<div class="paragraph">
-<p>In an event there are mutiple attributes for grade, location or subject, they will be sorted accordingly to the <strong>first</strong> grade, subject and location for the respective field.</p>
-</div>
-<div class="paragraph">
-<p>Sorting by grade are based on ascending order of seniority <code>[Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University]</code></p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>sort l c/t</code><br>
-Tutor&#8217;s list displayed will be sorted base on location.</p>
-</li>
-<li>
-<p><code>sort s c/t</code><br>
-Tutor&#8217;s list displayed will be sorted base on subject.</p>
-</li>
-<li>
-<p><code>sort n c/t</code><br>
-Tutor&#8217;s list displayed will be sorted base on name.</p>
-</li>
-<li>
-<p><code>sort g c/t</code><br>
-Tutor&#8217;s list displayed will be sorted base on grade.</p>
-</li>
-<li>
-<p><code>sort l c/s</code><br>
-Student&#8217;s list displayed will be sorted base on location.</p>
-</li>
-<li>
-<p><code>sort s c/s</code><br>
-Student&#8217;s list displayed will be sorted base on subject.</p>
-</li>
-<li>
-<p><code>sort n c/s</code><br>
-Student&#8217;s list displayed will be sorted base on name.</p>
-</li>
-<li>
-<p><code>sort g c/s</code><br>
-Student&#8217;s list displayed will be sorted base on grade.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
 <h3 id="closing-a-client-code-close-code-code-since-v1-4-code"><a class="link" href="#closing-a-client-code-close-code-code-since-v1-4-code">Closing a client : <code>close</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Close an existing and active student in active student&#8217;s list.<br>
@@ -580,177 +482,9 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-feature"><a class="link" href="#sort-feature">Sort feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The sort command is facilitated by a <code>SortCommandParser</code> which implements <code>Parser&lt;SortCommand&gt;</code>. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
-</div>
-<div class="paragraph">
-<p>Different types of sorting methods extends abstract class <code>SortCommand</code> which extends <code>Command</code> that resides in Logic as shown in the model below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SortCommandClassDiagram.PNG" alt="SortCommandClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The different type of sort command are implemented this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SortByNameCommand</span> <span class="directive">extends</span> SortCommand {
-     <span class="annotation">@Override</span>
-     <span class="directive">public</span> CommandResult execute() {
-         <span class="comment">// ... list logic ...</span>
-     }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByLocationCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByGradeCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortBySubjectCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When the user wants to sort the specific list according to his/her needs, <code>SortCommandParser</code> will parse the user input and decide which type of SortCommand to invoke.
-The implementation is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> SortCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
-        requireNonNull(args);
-        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_CATEGORY);
-
-        <span class="keyword">if</span> (!arePrefixesPresent(argumentMultimap, PREFIX_CATEGORY)
-                || argumentMultimap.getPreamble().isEmpty()) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }
-
-        <span class="predefined-type">String</span> sortType;
-        Category category;
-
-        <span class="keyword">try</span> {
-            sortType = argumentMultimap.getPreamble();
-            category = ParserUtil.parseCategory(argumentMultimap.getValue(PREFIX_CATEGORY)).get();
-            <span class="keyword">return</span> getSortCommandType(category, sortType);
-        } <span class="keyword">catch</span> (IllegalValueException ive) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }
-    }</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the user input format is invalid, an ParseException will be thrown and an error message will be displayed to user.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>A sequence diagram is shown below to show the current design when user input "sort l c/t".</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SortSequenceDiagram.PNG" alt="SortSequenceDiagram" width=""800'">
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-implementation-of-the-different-sort-commands"><a class="link" href="#aspect-implementation-of-the-different-sort-commands">Aspect: Implementation of the different sort commands</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make SortCommand an abstract method and allow the different sort commands to inherit from it.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able to reuse constants from SortCommand</p>
-</li>
-<li>
-<p>Cons: SortCommand might be redundant</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Implement multiple sort commands which extends command directly</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Might be easier to implement</p>
-</li>
-<li>
-<p>Cons: Messy</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect5">
-<h6 id="aspect-parsing-of-user-input-for-sort-command"><a class="link" href="#aspect-parsing-of-user-input-for-sort-command">Aspect: Parsing of user input for sort command</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> SortCommandParser parse one single string user input. Eg. 'sort l c/t' which sort tutor list by location.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able to utilise the current Logic and Model Component for command inputs</p>
-</li>
-<li>
-<p>Cons: Less intuitive to user.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Allow multiple user input of before parsing to a command. Eg. User input sort and system will prompts for user to input which list to sort.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This is much more intuitive for user and allows further enhancements which require multiple command inputs.</p>
-</li>
-<li>
-<p>Cons: This will require to overhaul of Logic and Model Component.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="close-feature"><a class="link" href="#close-feature">Close feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The close command allows users to remove a particular client from the active client&#8217;s list and stores it in the closed client&#8217;s list.</p>
 </div>
@@ -813,7 +547,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-the-close-command"><a class="link" href="#aspect-implementation-of-the-close-command">Aspect: Implementation of the close command</a></h5>
 <div class="ulist">
@@ -852,7 +586,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <div class="sect2">
 <h3 id="restore-feature"><a class="link" href="#restore-feature">Restore feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The restore command allows users to remove a particular client from the closed client&#8217;s list and restore it back to the active client&#8217;s list.</p>
 </div>
@@ -921,7 +655,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <div class="sect2">
 <h3 id="switch-feature"><a class="link" href="#switch-feature">Switch feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends <code>Command</code>.</p>
 </div>
@@ -1046,7 +780,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-switch-command"><a class="link" href="#aspect-implementation-of-switch-command">Aspect: Implementation of switch command</a></h5>
 <div class="ulist">
@@ -1087,7 +821,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:24:10 UTC
+Last updated 2018-04-15 08:05:54 UTC
 </div>
 </div>
 </body>
