@@ -273,7 +273,32 @@ Removes the "math" subject from the 1st student.</p>
 </li>
 <li>
 <p><code>re 2 c/t s/physics</code><br>
-Removes the "physics" subject from the 2nd tutor.</p>
+Removes the "physics" subject from the 2nd tutor.
+=== advancement of Grade function <code>[coming in v2.0]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Advances all student&#8217;s grades when this function is called (eg. change from p1 o p2).
+This is done under the consideration that all students would advance in grade at the end of the school year and having to edit every single entry would be very tedious when the data base is large.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>advanceGrade INDEX&#8230;&#8203;</code><br>
+A success message of the format <em>Successfully advanced students Grades</em> will be displayed and all students whose grade is not already at the highest limit would be advanced.
+The students at the specified INDEXes would not have their Grade advanced.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>advanceGrade</code><br>
+All students Grades are advanced</p>
+</li>
+<li>
+<p><code>advanceGrade 2 10</code><br>
+All students except from index 2 and 10 would have their Grades advanced.</p>
 </li>
 </ul>
 </div>
@@ -440,9 +465,13 @@ Removes the "physics" subject from the 2nd tutor.</p>
 <p>The Client Class extends Person that consists of 5 fields (name, phone, email, address, tags) while Client has additional 4 fields (location, grade, subject, category).</p>
 </div>
 <div class="paragraph">
-<p>All of the fields uses a specific class that takes a single String as it&#8217;s value as shown below.
-.Example of Subject field with it&#8217;s value
-image::ClientFieldExample.png[width="800"]</p>
+<p>All of the fields uses a specific class that takes a single String as it&#8217;s value as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClientFieldExample.png" alt="ClientFieldExample" width="800">
+</div>
+<div class="title">Figure 3. Example of Subject field with it&#8217;s value</div>
 </div>
 <div class="paragraph">
 <p>Hence, for fields that should actually take in multiple values (eg. Subject taking in "math physics chemistry") are currently stored as a single String while operations that work on the individual keywords have to manually split them into separate keywords through String operations.</p>
@@ -541,7 +570,7 @@ image::ClientFieldExample.png[width="800"]</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:05:54 UTC
+Last updated 2018-04-15 09:06:17 UTC
 </div>
 </div>
 </body>
