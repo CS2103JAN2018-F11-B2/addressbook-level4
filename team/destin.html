@@ -273,11 +273,13 @@ Removes the "math" subject from the 1st student.</p>
 </li>
 <li>
 <p><code>re 2 c/t s/physics</code><br>
-Removes the "physics" subject from the 2nd tutor.
-=== advancement of Grade function <code>[coming in v2.0]</code></p>
+Removes the "physics" subject from the 2nd tutor.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="advancement-of-grade-function-code-coming-in-v2-0-code"><a class="link" href="#advancement-of-grade-function-code-coming-in-v2-0-code">advancement of Grade function <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Advances all student&#8217;s grades when this function is called (eg. change from p1 o p2).
 This is done under the consideration that all students would advance in grade at the end of the school year and having to edit every single entry would be very tedious when the data base is large.</p>
@@ -344,12 +346,15 @@ All students except from index 2 and 10 would have their Grades advanced.</p>
 <p>exposes an unmodifiable <code>ObservableList&lt;Client&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
-<p>does not depend on any of the other three components.
-=== Model
-==== Current Implementation</p>
+<p>does not depend on any of the other three components.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="model"><a class="link" href="#model">Model</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The AddressBook currently stores Clients in separate UniqueClientList (students, tutors, closedStudents, closedTutors) depending on category the Client belongs to.</p>
 </div>
@@ -386,6 +391,7 @@ All students except from index 2 and 10 would have their Grades advanced.</p>
 </div>
 <div class="paragraph">
 <p>Example of function that takes in additional argument to determine whether to work on students or tutors</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-of-model"><a class="link" href="#design-considerations-of-model">Design Considerations of Model</a></h4>
@@ -460,7 +466,7 @@ All students except from index 2 and 10 would have their Grades advanced.</p>
 <div class="sect2">
 <h3 id="client-and-the-fields-of-client"><a class="link" href="#client-and-the-fields-of-client">Client and the fields of Client</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The Client Class extends Person that consists of 5 fields (name, phone, email, address, tags) while Client has additional 4 fields (location, grade, subject, category).</p>
 </div>
@@ -533,6 +539,58 @@ All students except from index 2 and 10 would have their Grades advanced.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="remove-subject-keyword-from-a-client"><a class="link" href="#remove-subject-keyword-from-a-client">Remove Subject keyword from a client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing a keyword from the Subject field of a specified client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites1: At least 1 student and 1 tutor has to be in TuitionCor.</p>
+</li>
+<li>
+<p>Prerequisites2: Displayed list has to be active list.</p>
+</li>
+<li>
+<p>Test case: <code>remove 1 c/s s/math</code><br>
+Assumption1: First student in TuitionCor has "math" in the Subject field. For example the Subject field is "physics chemistry math english". Otherwise, replace "math" in the command with a word in the Subject field of the client.
+Assumption2: First student in TuitionCor has more than 1 keyword in Subject field. (Each keyword is a single word separated by whitespace)
+Expected: "math" would be removed from Subject field of the first student. Given the above example, the remaining Subjects should be "physics chemistry english". Success message would be given. Timestamp in status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>remove 1 c/s s/math</code><br>
+Assumption: First student in TuitionCor does not have "math" in the Subject field.
+Expected: Error message "The inputted message does not exist"</p>
+</li>
+<li>
+<p>Test case: <code>remove 1 c/s s/math</code><br>
+Assumption: First student in TuitionCor has only "math" in Subject field.
+Expected: Error message warning user that removing the last keyword in Subject field is not allowed and suggests user to close client instead.</p>
+</li>
+<li>
+<p>Test case: <code>remove 1 c/t s/math</code><br>
+Assumption1: First tutor in TuitionCor has "math" in the Subject field. For example the Subject field is "physics chemistry math english". Otherwise, replace "math" in the command with a word in the Subject field of the client.
+Assumption2: First tutor in TuitionCor has more than 1 keyword in Subject field. (Each keyword is a single word separated by whitespace)
+Expected: "math" would be removed from Subject field of the first tutor. Given the above example, the remaining Subjects should be "physics chemistry english". Success message would be given. Timestamp in status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>remove 0 c/s s/math</code><br>
+Expected: No keyword is removed from Subject field. Error details shown in status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other invalid remove commands to try: <code>remove c/s s/math</code> (missing INDEX), <code>remove x c/s s/math</code> (where x is a number larger than the list size)<br>
+<code>remove 1 s/math</code> (missing CATEGORY), <code>remove 1 c/g s/math</code> (invalid CATEGORY, CATEGORY should only be "s" or "t")<br>
+<code>remove 1 c/s</code> (missing SUBJECT), <code>remove 1 c/s s/chemistry physics</code> (invalid SUBJECT, SUBJECT should only be a single word with no special characters and no whitespace).
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -570,7 +628,7 @@ All students except from index 2 and 10 would have their Grades advanced.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:19:21 UTC
+Last updated 2018-04-15 10:18:45 UTC
 </div>
 </div>
 </body>
