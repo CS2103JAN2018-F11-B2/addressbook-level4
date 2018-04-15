@@ -122,112 +122,6 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="adding-a-client-code-addclient-code-code-since-v1-2-code"><a class="link" href="#adding-a-client-code-addclient-code-code-since-v1-2-code">Adding a client: <code>addclient</code> <code>[Since v1.2]</code></a></h3>
-<div class="paragraph">
-<p>Adds a client to TuitionCor<br>
-Format: <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
-</div>
-<div class="paragraph">
-<p>Alias Format: <code>ac c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A client can have any number of tags (including 0)
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The type of location and grade accepted can be found below.
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>It&#8217;s required to indicate the category the particular client belongs to.</p>
-</li>
-<li>
-<p>Accepted case-insensitive location available for user input are <code>[North,South,East,West,Central]</code>. Any other type of location will be invalid.</p>
-</li>
-<li>
-<p>Accepted case-insensitive grade available for user input are as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary1' or 'P1'.</p>
-</li>
-<li>
-<p>LEVEL available are <code>[Kindergarten, Primary, Secondary, Tertiary, University]</code>. Alias LEVEL are <code>[K,P,S,J,U]</code> respectively.</p>
-</li>
-<li>
-<p>INDEX available varies differently for each Level.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>For Kindergarten INDEX available are <code>[1,2,3]</code>.</p>
-</li>
-<li>
-<p>For Primary INDEX available are <code>[1,2,3,4,5,6]</code>.</p>
-</li>
-<li>
-<p>For Secondary INDEX available are <code>[1,2,3,4,5]</code>.</p>
-</li>
-<li>
-<p>For Tertiary INDEX available are <code>[1,2]</code>.</p>
-</li>
-<li>
-<p>For University INDEX available are <code>[1,2,3,4]</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Subject are split based on black space. Hence a single subject has to be typed without any space.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Example: "chinese studies" would be treated as two separate subject "chinese" and "studies" by other commands. Hence it should be typed without a blank space such as "chineseStudies".</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/urgent l/north g/p1 s/math</code></p>
-</li>
-<li>
-<p><code>ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary1 s/math</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
 <h3 id="remove-a-subject-of-a-client-code-remove-code-code-since-v1-4-code"><a class="link" href="#remove-a-subject-of-a-client-code-remove-code-code-since-v1-4-code">Remove a subject of a client : <code>remove</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Removes the specific subject from an existing student in the address book.<br>
@@ -628,7 +522,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:18:45 UTC
+Last updated 2018-04-15 11:11:24 UTC
 </div>
 </div>
 </body>
