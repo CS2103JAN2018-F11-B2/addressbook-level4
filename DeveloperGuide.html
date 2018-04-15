@@ -252,7 +252,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level4</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level4</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
+<p>After forking the repo, links in the documentation will still point to the <code>CS2103JAN2018-F11-B2/main</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>CS2103JAN2018-F11-B2/main</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1281,10 +1281,10 @@ The detailed code is shown below:</p>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The sort command is facilitated by a SortCommandParser which implements Parser&lt;SortCommand&gt;. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
+<p>The sort command is facilitated by a <code>SortCommandParser</code> which implements <code>Parser&lt;SortCommand&gt;</code>. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
 </div>
 <div class="paragraph">
-<p>Different types of sorting methods extends abstract class SortCommand which extends Command resides in Logic as shown in the model below.</p>
+<p>Different types of sorting methods extends abstract class <code>SortCommand</code> which extends <code>Command</code> that resides in Logic as shown in the model below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1326,17 +1326,31 @@ The detailed code is shown below:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When the user wants to sort the specific list according to his/her needs, SortCommandParser will parse the user input and decide which type of SortCommand to invoke.
-An example of the input required "sort l c/t" which sorts tutor&#8217;s list by location.</p>
+<p>When the user wants to sort the specific list according to his/her needs, <code>SortCommandParser</code> will parse the user input and decide which type of SortCommand to invoke.
+The implementation is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> SortCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
-    <span class="predefined-type">String</span> trimmedArgs = args.trim();
-        <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(
-                <span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }</code></pre>
+        requireNonNull(args);
+        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_CATEGORY);
+
+        <span class="keyword">if</span> (!arePrefixesPresent(argumentMultimap, PREFIX_CATEGORY)
+                || argumentMultimap.getPreamble().isEmpty()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }
+
+        <span class="predefined-type">String</span> sortType;
+        Category category;
+
+        <span class="keyword">try</span> {
+            sortType = argumentMultimap.getPreamble();
+            category = ParserUtil.parseCategory(argumentMultimap.getValue(PREFIX_CATEGORY)).get();
+            <span class="keyword">return</span> getSortCommandType(category, sortType);
+        } <span class="keyword">catch</span> (IllegalValueException ive) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }
+    }</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1441,7 +1455,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <p>The implementation of the storage is similar to how clients are stored in the TuitionCor. Two <code>UniqueClientList</code> namely <code>closedStudents</code> and <code>closedTutors</code> were created to store the information of closed students and tutors.</p>
 </div>
 <div class="paragraph">
-<p>The clients are then added into their respective <code>UniqueClientList</code> this way:</p>
+<p>The addition of clients into their respective <code>UniqueClientList</code> are implemented this way:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1469,13 +1483,13 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
- An <code>AssertionError</code> is also thrown as the current there should not be any duplicated person as there should not exist any duplicated person in the active list.
+ An <code>AssertionError</code> is also thrown as there should not exist any duplicated person in the active list.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Removal of clients from the list are also done this way:</p>
+<p>Implementation of the removal of clients from the list are as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1508,7 +1522,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 <code>addclient</code> <code>clear</code> <code>close</code> <code>delete</code> <code>edit</code> <code>exit</code> <code>find</code> <code>help</code> <code>history</code> <code>list</code> <code>match</code> <code>redo</code> <code>undo</code> <code>remove</code> <code>sort</code> <code>switch</code></p>
 </div>
 <div class="paragraph">
-<p>A check is implemented this way in all commands features:</p>
+<p>A check is implemented this way in all commands features that available only when viewing active client list:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1519,7 +1533,7 @@ If the user input format is invalid, an ParseException will be thrown and an err
 </div>
 <div class="paragraph">
 <p>This allows <code>CommandNotAvailableInClosedViewException</code> to be thrown when the
-user is attempts to use a command unique to active list view while viewing close list view.</p>
+user is attempts to use a command unique to active list view while viewing closed list view.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1533,7 +1547,7 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is easier to implement as there would be less changes to existing commands and certain commands would not be relevant while in viewing closed client list.</p>
+<p>Pros: This is easier to implement as there would be less changes to existing commands as certain commands are not relevant while viewing closed client list.</p>
 </li>
 <li>
 <p>Cons: Design of unique commands would still have to be changed if they were to be made available to both list.</p>
@@ -1542,7 +1556,7 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Allow the display to switch to a list based on whether the command was unique to either closed or active list.</p>
+<p><strong>Alternative 2:</strong> Allow the display to automatically switch to either closed or active list list where the command is available upon user input.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1569,14 +1583,14 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>CloseCommand extends UndoableCommand and this is a undoable command. It overwrites executeUndoableCommand in abstract class UndoableCommand.</p>
+<p>CloseCommand extends <code>UndoableCommand</code> and this is an undoable command. It overwrites <code>executeUndoableCommand</code> in abstract class <code>UndoableCommand</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>It will first remove the the selected client from the active client list. If this particular client is not found, a PersonNotFoundException will be thrown.</p>
+<p>It will first remove the the selected client from the active client list. If this particular client is not found, a <code>PersonNotFoundException</code> will be thrown.</p>
 </li>
 <li>
-<p>After which, the particular removed client will be added to the closed client list. An AssertionError will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the active client list in TuitionCor.</p>
+<p>After which, the particular removed client will be added to the closed client list. An <code>AssertionError</code> will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the active client list in TuitionCor.</p>
 </li>
 </ul>
 </div>
@@ -1584,7 +1598,7 @@ user is attempts to use a command unique to active list view while viewing close
 </ul>
 </div>
 <div class="paragraph">
-<p>The code is as follows:</p>
+<p>The implementation is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1651,7 +1665,7 @@ user is attempts to use a command unique to active list view while viewing close
 <p>Pros: Model can be called once.</p>
 </li>
 <li>
-<p>Cons: This reduces code readability.</p>
+<p>Cons: New developers might no understand as this reduces code readability.</p>
 </li>
 </ul>
 </div>
@@ -1671,14 +1685,14 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>RestoreCommand extends UndoableCommand and this is a undoable command. It overwrites executeUndoableCommand in abstract class UndoableCommand.</p>
+<p><code>RestoreCommand</code> extends <code>UndoableCommand</code> and this is an undoable command. It overwrites <code>executeUndoableCommand</code> in abstract class <code>UndoableCommand</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>It will first remove the the selected client from the closed client list. If this particular client is not found, a PersonNotFoundException will be thrown.</p>
+<p>It will first remove the the selected client from the closed client list. If this particular client is not found, a <code>PersonNotFoundException</code> will be thrown.</p>
 </li>
 <li>
-<p>After which, the particular removed client will be added to the active client list. An AssertionError will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the active client list in TuitionCor.</p>
+<p>After which, the particular removed client will be added to the active client list. An AssertionError will be thrown if a duplicated client is detected as it should not be possible to have a duplicated client in the closed client list in TuitionCor.</p>
 </li>
 </ul>
 </div>
@@ -1689,7 +1703,7 @@ user is attempts to use a command unique to active list view while viewing close
 </ul>
 </div>
 <div class="paragraph">
-<p>The code is as follows:</p>
+<p>The implementation is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1735,12 +1749,12 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="sect3">
 <h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends Command.</p>
+<p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends <code>Command</code>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Switch command overrides execute method in Command with the following code:</p>
+<p>Implementation of Switch command that overrides <code>execute()</code> method in <code>Command</code> is as follows:</p>
 </li>
 </ul>
 </div>
@@ -1761,7 +1775,7 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>A ListPanelController is used to keep track of the currently displayed list and switch the list when called.</p>
+<p>A <code>ListPanelController</code> is used to keep track of the currently displayed list and switch the list when called.</p>
 </li>
 </ul>
 </div>
@@ -1786,7 +1800,7 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>Switch command uses ClientListSwitchEvent to raise an event whenever the user wants to toggle the list displayed.</p>
+<p>Switch command uses <code>ClientListSwitchEvent</code> to raise an event whenever the user wants to toggle the list displayed.</p>
 </li>
 </ul>
 </div>
@@ -1805,7 +1819,7 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>When a event is raise it&#8217;s handled by handleClientListSwitchEvent which resides in both StudentListPanel and TutorListPanel.</p>
+<p>When a event is raise it&#8217;s handled by <code>handleClientListSwitchEvent</code> which resides in both <code>StudentListPanel</code> and <code>TutorListPanel</code>.</p>
 </li>
 </ul>
 </div>
@@ -1821,7 +1835,7 @@ user is attempts to use a command unique to active list view while viewing close
 <div class="ulist">
 <ul>
 <li>
-<p>This will allow StudentListPanel and TutorListPanel to be updated accordingly based on the current list that is on display.</p>
+<p>This will allow <code>StudentListPanel</code> and <code>TutorListPanel</code> to be updated accordingly based on the current list that is on display.</p>
 </li>
 </ul>
 </div>
@@ -1877,14 +1891,14 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Call a method in StudentListPanel and TutorListPanel to indicate switch event.</p>
+<p><strong>Alternative 2:</strong> Call a method in StudentListPanel and TutorListPanel to indicate a switch request.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Code is easier to understand.</p>
 </li>
 <li>
-<p>Cons: Direct coupling increase and changing a part might affect another component.</p>
+<p>Cons: Direct coupling occurs and changing a part might affect another component.</p>
 </li>
 </ul>
 </div>
@@ -2918,19 +2932,53 @@ for <code>RemarkCommandParser</code>.</p>
 <h2 id="product-scope"><a class="link" href="#product-scope">Appendix B: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Target user profile</strong>:
-* Tuition coordinators who handle significant number of contacts and are comfortable with CLI applications.</p>
+<p><strong>Target user profile</strong>:<br>
+ Tuition coordinators who handle significant number of contacts and are comfortable with CLI applications.</p>
 </div>
-<div class="paragraph">
-<p><strong>Value proposition</strong>:
-TuitionCor is targeted at tuition coordinators who have to manage a large amount of contacts.
-The daily job-scope of a tuition coordinator involves the need to manage large amount of contacts and match the students to tutors according to their credentials, needs and location.
-Therefore, TuitionCor aims to facilitate this process and make the job of a tuition coordinator easier.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Value proposition*:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>TuitionCor is targeted at tuition coordinators who have to manage a large amount of contacts.</p>
+</li>
+<li>
+<p>The daily job-scope of a tuition coordinator involves the need to manage large amount of contacts and match the students to tutors according to their credentials, needs and location.</p>
+</li>
+<li>
+<p>Therefore, TuitionCor aims to facilitate this process and make the job of a tuition coordinator easier.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>In addition, users are able to
-* find and filter contacts easily
-* add and edit contacts</p>
+</li>
+<li>
+<p>In addition, users are able to</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add clients</p>
+</li>
+<li>
+<p>Match students to tutors or vice versa</p>
+</li>
+<li>
+<p>Sort clients based on a particular aspect</p>
+</li>
+<li>
+<p>Find clients based on keywords</p>
+</li>
+<li>
+<p>Close assigned clients</p>
+</li>
+<li>
+<p>Restore closed clients</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3931,7 +3979,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:47:41 UTC
+Last updated 2018-04-15 07:24:10 UTC
 </div>
 </div>
 </body>

@@ -140,7 +140,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>addclient</code></strong><code>c/s n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Urgent l/north g/s4 s/math</code> : adds a contact named <code>John Doe</code> to TuitionCor.</p>
+<p><strong><code>addclient</code></strong><code>c/s n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Urgent l/north g/s4 s/math</code> : adds a contact of a student named <code>John Doe</code> to TuitionCor.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -152,8 +152,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p>Some pointers<br>
-Duplicates of similar students in the student&#8217;s list is not allowed. Vice versa for tutor&#8217;s list. However, duplicate contacts between student&#8217;s and tutor&#8217;s list is allowed as it&#8217;s possible for a tutor to also be a student.<br></p>
+<p>Some pointers:<br>
+Duplicates of similar students in the student&#8217;s list is not allowed, vice versa for tutor&#8217;s list. However, duplicate contacts between student&#8217;s and tutor&#8217;s list is allowed as it&#8217;s possible for a tutor to also be a student.<br></p>
 <div class="paragraph">
 <p>A duplication of student or tutor happens when they do not have at least one difference in the following fields: {Name, Address, Phone Number, Email}.</p>
 </div>
@@ -449,7 +449,7 @@ The type of location and grade accepted can be found below.
 <p>It&#8217;s required to indicate the category the particular client belongs to.</p>
 </li>
 <li>
-<p>Accepted case-insensitive location available for user input are {North,South,East,West,Central}. Any other type of location will be invalid.</p>
+<p>Accepted case-insensitive location available for user input are <code>[North,South,East,West,Central]</code>. Any other type of location will be invalid.</p>
 </li>
 <li>
 <p>Accepted case-insensitive grade available for user input are as follows:</p>
@@ -459,26 +459,26 @@ The type of location and grade accepted can be found below.
 <p>Format of grade are in this particular format 'LEVEL YEAR' or alias format 'ALIASLEVEL YEAR' without any spacing in-between. Example: 'Primary1' or 'P1'.</p>
 </li>
 <li>
-<p>LEVEL available are {Kindergarten, Primary, Secondary, Tertiary, University}. Alias LEVEL are {K,P,S,J,U} respectively.</p>
+<p>LEVEL available are <code>[Kindergarten, Primary, Secondary, Tertiary, University]</code>. Alias LEVEL are <code>[K,P,S,J,U]</code> respectively.</p>
 </li>
 <li>
 <p>INDEX available varies differently for each Level.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For Kindergarten INDEX available are {1,2,3}.</p>
+<p>For Kindergarten INDEX available are <code>[1,2,3]</code>.</p>
 </li>
 <li>
-<p>For Primary INDEX available are {1,2,3,4,5,6}.</p>
+<p>For Primary INDEX available are <code>[1,2,3,4,5,6]</code>.</p>
 </li>
 <li>
-<p>For Secondary INDEX available are {1,2,3,4,5}.</p>
+<p>For Secondary INDEX available are <code>[1,2,3,4,5]</code>.</p>
 </li>
 <li>
-<p>For Tertiary INDEX available are {1,2}.</p>
+<p>For Tertiary INDEX available are <code>[1,2]</code>.</p>
 </li>
 <li>
-<p>For University INDEX available are {1,2,3,4}</p>
+<p>For University INDEX available are <code>[1,2,3,4]</code>.</p>
 </li>
 </ul>
 </div>
@@ -509,7 +509,7 @@ The type of location and grade accepted can be found below.
 <p><code>addclient c/t n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/urgent l/north g/p1 s/math</code></p>
 </li>
 <li>
-<p><code>ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary 1 s/math</code></p>
+<p><code>ac c/s n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/urgent l/south g/primary1 s/math</code></p>
 </li>
 </ul>
 </div>
@@ -564,18 +564,21 @@ Alias Format: <code>so g c/s</code></p>
 <div class="paragraph">
 <p>Sorting student&#8217;s list based on subject<br>
 Format: <code>sort s c/s</code><br>
-Alias Format: `so s c/s'</p>
+Alias Format: <code>so s c/s</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Sorts the client based on the selected category, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.</p>
+<p>Sorts the client based on the selected category, either <code>t</code> for tutors or <code>s</code> for students based on a chosen sort type <code>n</code> for name, <code>g</code> for grade, <code>s</code> for subject and <code>l</code> for location.</p>
 </div>
 <div class="paragraph">
-<p>Sorting by name, grade and subjects are based on alphabetical order.</p>
+<p>Sorting by name, grade, location and subjects are based on alphabetical order.<br></p>
 </div>
 <div class="paragraph">
-<p>Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
+<p>In an event there are mutiple attributes for grade, location or subject, they will be sorted accordingly to the <strong>first</strong> grade, subject and location for the respective field.</p>
+</div>
+<div class="paragraph">
+<p>Sorting by grade are based on ascending order of seniority <code>[Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University]</code></p>
 </div>
 </div>
 </div>
@@ -832,7 +835,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p><strong>For grades only</strong> alias grades will match original grades. e.g <code>p2</code> will match <code>primary2</code>.</p>
+<p><strong>For grades only</strong>, alias grades will match original grades. e.g <code>p2</code> will match <code>primary2</code>.</p>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
@@ -1208,21 +1211,6 @@ Both CATEGORY cannot be referring to the same category.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>notify 1 c/s 1 c/t</code><br>
-An email will be send to the first student on the students list using your linked Gmail account. The email will contain relevant information regarding the first tutor on the tutors list.</p>
-</li>
-<li>
-<p><code>notify 2 c/t 1 c/s</code><br>
-An email will be send to the second tutor on the tutors list using your linked Gmail account. The email will contain relevant information regarding the first student on the students list.</p>
-</li>
-</ul>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1234,6 +1222,21 @@ The email notification sent to will be based on the email in the client&#8217;s 
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>notify 1 c/s 1 c/t</code><br>
+An email will be send to the first student on the students list using your linked Gmail account. The email will contain relevant information regarding the first tutor on the tutors list.</p>
+</li>
+<li>
+<p><code>notify 2 c/t 1 c/s</code><br>
+An email will be send to the second tutor on the tutors list using your linked Gmail account. The email will contain relevant information regarding the first student on the students list.<br></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1369,7 +1372,7 @@ Alias: <code>r</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:47:41 UTC
+Last updated 2018-04-15 07:24:10 UTC
 </div>
 </div>
 </body>
