@@ -105,6 +105,11 @@
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-client">G.2. Deleting a client</a></li>
 <li><a href="#remove-subject-keyword-from-a-client">G.3. Remove Subject keyword from a client</a></li>
+<li><a href="#sorting-a-list">G.4. Sorting a list</a></li>
+<li><a href="#switching-the-displayed-client-list">G.5. Switching the displayed client list</a></li>
+<li><a href="#closing-a-client">G.6. Closing a client</a></li>
+<li><a href="#restoring-a-client">G.7. Restoring a client</a></li>
+<li><a href="#matching-a-client">G.8. Matching a client</a></li>
 </ul>
 </li>
 <li><a href="#feature-contribution">Appendix H: Feature Contribution</a>
@@ -3134,6 +3139,12 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change the grades of all the students without manually editing them one by one</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an organised application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily view, update and search the active clients and closed clients</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
@@ -3883,6 +3894,220 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="sorting-a-list"><a class="link" href="#sorting-a-list">G.4. Sorting a list</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting a list while all clients are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Multiple clients in either student list or tutor list. Displayed list must be active client list.</p>
+</li>
+<li>
+<p>Test case: <code>sort n c/t</code><br>
+Expected: Tutor&#8217;s list is being sorted according alphabetical order based on the client&#8217;s name.</p>
+</li>
+<li>
+<p>Test case: <code>sort l c/t</code><br>
+Expected: Tutor&#8217;s list is being sorted according to their location in alphabetical order based on the location displayed or the <strong>first</strong> location displayed if there exist multiple locations.</p>
+</li>
+<li>
+<p>Test case: <code>sort s c/t</code><br>
+Expected: Tutor&#8217;s list is being sorted according to their subject in alphabetical order based on the subject displayed or the <strong>first</strong> location displayed if there exist multiple locations.</p>
+</li>
+<li>
+<p>Test case: <code>sort g c/t</code><br>
+Expected: Tutor&#8217;s list is being sorted according to grade in ascending seniority <code>[Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University]</code>. It will be sorted based on the <strong>first</strong> grade if there exist multiple grades.</p>
+</li>
+<li>
+<p>Test case: <code>sort n c/s</code><br>
+Expected: Student&#8217;s list is being sorted according alphabetical order based on the client&#8217;s name.</p>
+</li>
+<li>
+<p>Test case: <code>sort l c/s</code><br>
+Expected: Student&#8217;s list is being sorted according to their location in alphabetical order based on the location displayed or the <strong>first</strong> location displayed if there exist multiple locations.</p>
+</li>
+<li>
+<p>Test case: <code>sort s c/s</code><br>
+Expected: Student&#8217;s list is being sorted according to their subject in alphabetical order based on the subject displayed or the <strong>first</strong> location displayed if there exist multiple locations.</p>
+</li>
+<li>
+<p>Test case: <code>sort g c/s</code><br>
+Expected: Student&#8217;s list is being sorted according to grade in ascending seniority <code>[Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University]</code>. It will be sorted based on the <strong>first</strong> grade if there exist multiple grades.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-the-displayed-client-list"><a class="link" href="#switching-the-displayed-client-list">G.5. Switching the displayed client list</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Default displayed list when launching TuitionCor</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Launch the application<br>
+Expected: Active client list is being displayed. <code>&lt;Currently displaying active clients&gt;</code> should be shown in the status bar.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Switching the display</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Currently in active client list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>switch</code><br>
+Expected: Closed client list is being displayed. <code>&lt;Currently displaying closed clients&gt;</code> should be shown in the status bar.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Prerequisites: Currently in closed client list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>switch</code><br>
+Expected: Active client list is being displayed. <code>&lt;Currently displaying active clients&gt;</code> should be shown in the status bar.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-a-client"><a class="link" href="#closing-a-client">G.6. Closing a client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Closing a client while all clients are listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Clients displayed in either student list or tutor list. Minimally there must exist at least 1 student and 1 tutor in their respective list. Displayed list must be <strong>active client list</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>close 1 c/s</code><br>
+Assumptions: Assuming that the first student on the student list takes on the name <code>Alex Yeoh</code>.<br>
+Expected: Student Alex Yeoh is being closed and is no longer seen on the student list in active client list. Switching the display using <code>switch</code>, Alex Yeoh will be seen displayed on the student list in closed client list.</p>
+</li>
+<li>
+<p>Test case: <code>close 1 c/t</code><br>
+Assumptions: Assuming that the first tutor on the tutor list takes on the name <code>George</code>.<br>
+Expected: Tutor George is being closed and is no longer seen on the tutor list in active client list. Switching the display using <code>switch</code>, George will be seen displayed on the tutor list in closed client list.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Closing a client while in closed client list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Clients displayed in either student list or tutor list. Minimally there must exist at least 1 student and 1 tutor in their respective list. Displayed list must be <strong>closed client list</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>close 1 c/s</code><br>
+Expected: No students are being closed. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="restoring-a-client"><a class="link" href="#restoring-a-client">G.7. Restoring a client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Restoring a client while all clients are listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Clients displayed in either student list or tutor list. Minimally there must exist at least 1 student and 1 tutor in their respective list. Displayed list must be <strong>closed client list</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>restore 1 c/s</code><br>
+Assumptions: Assuming that the first student on the student list takes on the name <code>Tom</code>.<br>
+Expected: Student Tom is being restored and is no longer seen on the student list in closed client list. Switching the display using <code>switch</code>, Tom will be seen displayed on the student list in active client list.</p>
+</li>
+<li>
+<p>Test case: <code>restore 1 c/t</code><br>
+Assumptions: Assuming that the first tutor on the tutor list takes on the name <code>Cindy</code>.<br>
+Expected: Tutor Cindy is being restored and is no longer seen on the tutor list in closed client list. Switching the display using <code>switch</code>, Cindy will be seen displayed on the tutor list in active client list.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Restoring a client while in active client list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Clients displayed in either student list or tutor list. Minimally there must exist at least 1 student and 1 tutor in their respective list. Displayed list must be <strong>active client list</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>restore 1 c/s</code><br>
+Expected: No students are being restored. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-a-client"><a class="link" href="#matching-a-client">G.8. Matching a client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Matching a client while all clients are listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all clients using the <code>list</code> command. Clients displayed in either student list or tutor list. Minimally there must exist at least 1 student and 1 tutor in their respective list. Displayed list must be <strong>active client list</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>match 1 c/s</code><br>
+Assumptions: Assuming that the first student on the student list with name <code>Alex Yeoh</code>, location <code>North</code>, grade <code>p2</code> and subject <code>math</code>.<br>
+Expected: Student list will now only display Alex Yeoh. In the tutor list tutor James and Jennifer is being displayed.<br>
+James is matched as his client card contains <code>Math</code> as his first subject and <code>North</code> as his first location.<br>
+Jennifer is matched as her client card contains grade of <code>p2</code> and subject <code>math</code> is her only subject.<br>
+The matched tutors fields are also being highlighted in orange.</p>
+</li>
+<li>
+<p>Test case: <code>match 4 c/t</code><br>
+Assumptions: Assuming that the forth tutor on the tutor list with name <code>Nancy</code>, location <code>Central</code>, grade <code>u1 u2</code> and subject <code>physics</code>.<br>
+Expected: Tutor list will now only display Nancy. In the student list, student Bernice Yu, Roy Balakrishnan, Charlotte Oliveiro and David Li is being displayed.<br>
+Berenice Yu is matched as her client card contains location <code>Central</code> and <code>Physics</code>.<br>
+Roy Balakrishnan is matched as his client card contains location <code>Central</code> and <code>Physics</code>.<br>
+Charlotte Oliveiro is matched as as her client card contains <code>Physics</code> as her first subject.<br>
+David Li is matched as his client card contains location <code>Central</code>.<br>
+The matched students fields are also being highlighted in orange.<br>
+The matched students are also being displayed in descending order based on the number of matched fields, with the student with the most matched fields displayed first.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3983,7 +4208,7 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:11:24 UTC
+Last updated 2018-04-15 11:24:07 UTC
 </div>
 </div>
 </body>
