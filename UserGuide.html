@@ -140,7 +140,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>addclient</code></strong><code>c/s n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Urgent</code> l/north g/s4 s/math : adds a contact named <code>John Doe</code> to TuitionCor.</p>
+<p><strong><code>addclient</code></strong><code>c/s n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Urgent l/north g/s4 s/math</code> : adds a contact named <code>John Doe</code> to TuitionCor.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -296,11 +296,24 @@ Duplicates of similar students in the student&#8217;s list is not allowed. Vice 
 </div>
 </li>
 <li>
-<p>Integrate it with an online platform.</p>
+<p>Integration with Gmail.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Whenever a user or student sign up on the online platform, their information will automatically be added into TuitionCor database.</p>
+<p>Users are able to link a valid Gmail account to TuitionCor.</p>
+</li>
+<li>
+<p>This allows TuitionCor to be able to send email notification to clients.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Email notification</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows users to to send a client through email relevant contact information regarding their assigned Tutors or Students upon a successful matching.</p>
 </li>
 </ul>
 </div>
@@ -336,24 +349,24 @@ Duplicates of similar students in the student&#8217;s list is not allowed. Vice 
 </div>
 </li>
 <li>
-<p>Auto close function.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This allows the application to auto delete a client from the closed list after a certain period.</p>
-</li>
-<li>
-<p>The grace period for auto deletion can be predetermined by the user.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Addition grade fields to be added.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Polytechnic and ITE.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Matching Specific grade or subject attributes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Current match command only matches the first grade or subject attribute when a client has more than 1 grade or subject attribute.</p>
+</li>
+<li>
+<p>Search all the grade and subject attribute and highlight the specific matched attribute only.</p>
 </li>
 </ul>
 </div>
@@ -396,7 +409,7 @@ Duplicates of similar students in the student&#8217;s list is not allowed. Vice 
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-client-code-addclient-code-since-v1-2"><a class="link" href="#adding-a-client-code-addclient-code-since-v1-2">3.2. Adding a client: <code>addclient</code> {Since v1.2}</a></h3>
+<h3 id="adding-a-client-code-addclient-code-code-since-v1-2-code"><a class="link" href="#adding-a-client-code-addclient-code-code-since-v1-2-code">3.2. Adding a client: <code>addclient</code> <code>[Since v1.2]</code></a></h3>
 <div class="paragraph">
 <p>Adds a client to TuitionCor<br>
 Format: <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code></p>
@@ -512,7 +525,7 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-a-client-sort-since-v1-3"><a class="link" href="#sorting-a-client-sort-since-v1-3">3.4. Sorting a client: 'sort' {Since v1.3}</a></h3>
+<h3 id="sorting-a-client-sort-code-since-v1-3-code"><a class="link" href="#sorting-a-client-sort-code-since-v1-3-code">3.4. Sorting a client: 'sort' <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Sorting tutor&#8217;s list based on name<br>
 Format: <code>sort n c/t</code><br>
@@ -556,13 +569,13 @@ Alias Format: `so s c/s'</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>*Sorts the client based on the selected category, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.</p>
+<p>Sorts the client based on the selected category, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.</p>
 </div>
 <div class="paragraph">
-<p>*Sorting by name, grade and subjects are based on alphabetical order.</p>
+<p>Sorting by name, grade and subjects are based on alphabetical order.</p>
 </div>
 <div class="paragraph">
-<p>*Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
+<p>Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
 </div>
 </div>
 </div>
@@ -607,7 +620,7 @@ Student&#8217;s list displayed will be sorted base on grade.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-between-active-and-closed-client-s-list-code-switch-code-since-v1-4"><a class="link" href="#switching-between-active-and-closed-client-s-list-code-switch-code-since-v1-4">3.5. Switching between active and closed client&#8217;s list : <code>switch</code> {Since v1.4}</a></h3>
+<h3 id="switching-between-active-and-closed-client-s-list-code-switch-code-code-since-v1-4-code"><a class="link" href="#switching-between-active-and-closed-client-s-list-code-switch-code-code-since-v1-4-code">3.5. Switching between active and closed client&#8217;s list : <code>switch</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Switch the display between active and closed client&#8217;s list.<br>
 Format: <code>switch</code><br>
@@ -615,7 +628,7 @@ Alias Format: <code>sw</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="closing-a-client-code-close-code-since-v1-4"><a class="link" href="#closing-a-client-code-close-code-since-v1-4">3.6. Closing a client : <code>close</code> {Since v1.4}</a></h3>
+<h3 id="closing-a-client-code-close-code-code-since-v1-4-code"><a class="link" href="#closing-a-client-code-close-code-code-since-v1-4-code">3.6. Closing a client : <code>close</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Close an existing and active student in active student&#8217;s list.<br>
 Format: <code>close INDEX c/s</code><br>
@@ -654,7 +667,7 @@ This command is only available when viewing the active client&#8217;s list. Use 
 </div>
 </div>
 <div class="sect2">
-<h3 id="restoring-a-client-code-restore-code-since-v1-4"><a class="link" href="#restoring-a-client-code-restore-code-since-v1-4">3.7. Restoring a client : <code>restore</code> {Since v1.4}</a></h3>
+<h3 id="restoring-a-client-code-restore-code-code-since-v1-4-code"><a class="link" href="#restoring-a-client-code-restore-code-code-since-v1-4-code">3.7. Restoring a client : <code>restore</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Restore an existing and closed student in the closed student&#8217;s list.<br>
 Format: <code>restore INDEX c/s</code><br>
@@ -672,7 +685,7 @@ Alias Format: <code>res INDEX c/t</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This command is only available when viewing the closed client&#8217;s list. Use command word <code>switch</code> to toggle from closed list to active list.
+This command is only available when viewing the closed client&#8217;s list. Use command word <code>switch</code> to toggle from active list to closed list.
 </td>
 </tr>
 </table>
@@ -693,7 +706,7 @@ This command is only available when viewing the closed client&#8217;s list. Use 
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-client-code-edit-code-since-v1-3"><a class="link" href="#editing-a-client-code-edit-code-since-v1-3">3.8. Editing a client : <code>edit</code> {Since v1.3}</a></h3>
+<h3 id="editing-a-client-code-edit-code-code-since-v1-3-code"><a class="link" href="#editing-a-client-code-edit-code-code-since-v1-3-code">3.8. Editing a client : <code>edit</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the address book.<br>
 Format: <code>edit INDEX c/s [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
@@ -752,7 +765,7 @@ Edits the name of the 2nd tutor to be <code>Beatty Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="remove-a-subject-of-a-client-code-remove-code-since-v1-4"><a class="link" href="#remove-a-subject-of-a-client-code-remove-code-since-v1-4">3.9. Remove a subject of a client : <code>remove</code> {Since v1.4}</a></h3>
+<h3 id="remove-a-subject-of-a-client-code-remove-code-code-since-v1-4-code"><a class="link" href="#remove-a-subject-of-a-client-code-remove-code-code-since-v1-4-code">3.9. Remove a subject of a client : <code>remove</code> <code>[Since v1.4]</code></a></h3>
 <div class="paragraph">
 <p>Removes the specific subject from an existing student in the address book.<br>
 Format: <code>remove INDEX c/s s/SUBJECT</code>
@@ -803,7 +816,7 @@ Removes the "physics" subject from the 2nd tutor.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-clients-code-find-code-since-v1-3"><a class="link" href="#locating-clients-code-find-code-since-v1-3">3.10. Locating clients: <code>find</code> {Since v1.3}</a></h3>
+<h3 id="locating-clients-code-find-code-code-since-v1-3-code"><a class="link" href="#locating-clients-code-find-code-code-since-v1-3-code">3.10. Locating clients: <code>find</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Finds clients that contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -817,6 +830,9 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <ul>
 <li>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p><strong>For grades only</strong> alias grades will match original grades. e.g <code>p2</code> will match <code>primary2</code>.</p>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
@@ -844,6 +860,10 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
+<p><code>find p2</code><br>
+Returns any client having grades <code>p2</code> or <code>primary2</code></p>
+</li>
+<li>
 <p><code>f Betsy Tim John</code><br>
 Returns any client having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
@@ -859,14 +879,14 @@ Returns any client having keyword <code>blk</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-potential-clients-code-match-code-since-v1-3"><a class="link" href="#matching-potential-clients-code-match-code-since-v1-3">3.11. Matching potential clients: <code>match</code> {Since v1.3}</a></h3>
+<h3 id="matching-potential-clients-code-match-code-code-since-v1-3-code"><a class="link" href="#matching-potential-clients-code-match-code-code-since-v1-3-code">3.11. Matching potential clients: <code>match</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
-<p>Matches potential tutors to selected student based on INDEX<br>
+<p>Matches potential tutors to selected student based on <code>INDEX</code><br>
 Format: <code>match INDEX c/s</code>
 Alias Format: <code>m INDEX c/s</code></p>
 </div>
 <div class="paragraph">
-<p>Matches potential students to selected tutor based on INDEX+
+<p>Matches potential students to selected tutor based on <code>INDEX</code><br>
 Format: <code>match INDEX c/t</code>
 Alias Format: <code>m INDEX c/t</code></p>
 </div>
@@ -888,6 +908,9 @@ Alias Format: <code>m INDEX c/t</code></p>
 </li>
 <li>
 <p>Only clients that have any matches based on subject, grade or location will be displayed.</p>
+</li>
+<li>
+<p>If the client have multiple grade or subject attributes, only the first grade or subject attribute is used to match any potential clients.</p>
 </li>
 <li>
 <p>Matched clients will be listed from the most number of matched attributes to the least number of matched attributes.</p>
@@ -916,7 +939,7 @@ At index 1 of student&#8217;s list, Jim is a student who requires tutors that ar
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-client-code-delete-code-since-v1-3"><a class="link" href="#deleting-a-client-code-delete-code-since-v1-3">3.12. Deleting a client : <code>delete</code> {Since v1.3}</a></h3>
+<h3 id="deleting-a-client-code-delete-code-code-since-v1-3-code"><a class="link" href="#deleting-a-client-code-delete-code-code-since-v1-3-code">3.12. Deleting a client : <code>delete</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified tutor from TuitionCor.<br>
 Format: <code>delete INDEX c/t</code>
@@ -935,7 +958,7 @@ Alias Format: <code>d INDEX c/s</code></p>
 <p>Deletes the client at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>'c/t' and 'c/s' refers to tutor&#8217;s category respectively.</p>
+<p><code>c/t</code> and <code>c/s</code> refers to tutor&#8217;s category respectively.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -1078,7 +1101,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.16. Clearing all entries : <code>clear</code> {Since v1.0}</a></h3>
+<h3 id="clearing-all-entries-code-clear-code-code-since-v1-0-code"><a class="link" href="#clearing-all-entries-code-clear-code-code-since-v1-0-code">3.16. Clearing all entries : <code>clear</code> <code>[Since v1.0]</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from TuitionCor.<br>
 Format: <code>clear</code></p>
@@ -1088,7 +1111,7 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.17. Exiting the program : <code>exit</code> {Since v1.0}</a></h3>
+<h3 id="exiting-the-program-code-exit-code-code-since-v1-0-code"><a class="link" href="#exiting-the-program-code-exit-code-code-since-v1-0-code">3.17. Exiting the program : <code>exit</code> <code>[Since v1.0]</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -1105,9 +1128,150 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="integration-with-gmail-code-coming-in-v2-0-code"><a class="link" href="#integration-with-gmail-code-coming-in-v2-0-code">3.19. Integration with Gmail <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Link a valid Gmail account to TuitionCor.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+TuitionCor will only be linked to <strong>one</strong> valid Gmail account at any point of time
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>set e/EMAIL pw/PASSWORD</code><br>
+A success message of the format <em>Successfully linked EMAIL to TuitionCor</em> will be displayed for successful linking.</p>
+</div>
+<div class="paragraph">
+<p>A failure message of the format <em>Failed to link EMAIL to TuitionCor</em> will be displayed for unsuccessful linking. Please check that you have inputted the correct email and password.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set e/BestCoordinatorInSg@gmail.com pw/Iamthebest</code><br>
+Links Gmail account <code>BestCoordinatorInSg@gmail.com</code> to TuitionCor upon a successful login.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email-notification-function-code-coming-in-v2-0-code"><a class="link" href="#email-notification-function-code-coming-in-v2-0-code">3.20. Email notification function <code>[coming in v2.0]</code></a></h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please ensure that you have successfully linked a Gmail account to TuitionCor before you are able to use this function
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Parameters:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>notify INDEX c/CATEGORY INDEX c/CATEGORY</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The first <code>INDEX c/CATEGORY</code> refers to the client you would like to notify and send an email with the relevant contact details.<br>
+The second <code>INDEX c/CATEGORY</code> refers to the client whose information you would like to send to the former client.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both CATEGORY cannot be referring to the same category.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>notify 1 c/s 1 c/t</code><br>
+An email will be send to the first student on the students list using your linked Gmail account. The email will contain relevant information regarding the first tutor on the tutors list.</p>
+</li>
+<li>
+<p><code>notify 2 c/t 1 c/s</code><br>
+An email will be send to the second tutor on the tutors list using your linked Gmail account. The email will contain relevant information regarding the first student on the students list.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The email notification sent to will be based on the email in the client&#8217;s information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-match-feature-code-coming-in-v2-0-code"><a class="link" href="#auto-match-feature-code-coming-in-v2-0-code">3.21. Auto match feature <code>[coming in v2.0]</code></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When the user enters a new client. the system will auto generates a list of potential clients for this newly added client.</p>
+</li>
+<li>
+<p>This is to enhance the efficiency of our user and shorten the time needed for the user to match potential clients.</p>
+</li>
+<li>
+<p>The reason for this enhancement is to facilitate the user when a potential client makes a call to seek for assignments. With this enhancement, the system is able to generate a list of potential clients right after the client is added into the system. The user is then able to reply the client on the available assignments right away before the client even hangs up the phone.</p>
+</li>
+<li>
+<p>One possible way of implementing it is to call for matching command with the client info after the addclient command has successfully executed.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code"><a class="link" href="#match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code">3.22. Match multiple grade and subject attributes <code>[coming in v2.0]</code></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Currently, match command assumes all client has only one grade subject and location attribute. If a client has multiple grade attributes, match command only matches potential clients with his/her first grade attribute.</p>
+</li>
+<li>
+<p>Enhancement could be made to match all the Grade attributes respectively and list the matching result from the highest match to the lowest match.</p>
+</li>
+<li>
+<p>Only matched attributes should be highlighted.</p>
+</li>
+<li>
+<p>One possible way of implementing it is to change Grade, Subject and Location to List&lt;String&gt; and compare them one by one with other clients.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1126,11 +1290,6 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
-<li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code><br>
-Alias: <code>a</code></p>
-</li>
 <li>
 <p><strong>AddClient</strong> <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code><br>
 e.g. <code>addclient c/t n/Tutor1 p/98765432 a/Blk 10 Singapore, #01-239 e/testing@example.com t/family l/north g/p3 s/physics</code><br>
@@ -1210,7 +1369,7 @@ Alias: <code>r</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 21:13:40 UTC
+Last updated 2018-04-15 04:28:38 UTC
 </div>
 </div>
 </body>

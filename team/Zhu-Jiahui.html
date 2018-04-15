@@ -54,7 +54,7 @@
 <p><strong>Minor enhancement</strong>: enhanced find command that search all the keywords stored in TuiTionCor.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F11-B2/main/blob/master/collated/functional/Zhu-Jiahui.md">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F11-B2/main/blob/master/collated/functional/Zhu-Jiahui.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F11-B2/main/blob/master/collated/test/Zhu-Jiahui.md">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -121,14 +121,14 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="matching-potential-clients-code-match-code-since-v1-3"><a class="link" href="#matching-potential-clients-code-match-code-since-v1-3">Matching potential clients: <code>match</code> {Since v1.3}</a></h3>
+<h3 id="matching-potential-clients-code-match-code-code-since-v1-3-code"><a class="link" href="#matching-potential-clients-code-match-code-code-since-v1-3-code">Matching potential clients: <code>match</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
-<p>Matches potential tutors to selected student based on INDEX<br>
+<p>Matches potential tutors to selected student based on <code>INDEX</code><br>
 Format: <code>match INDEX c/s</code>
 Alias Format: <code>m INDEX c/s</code></p>
 </div>
 <div class="paragraph">
-<p>Matches potential students to selected tutor based on INDEX+
+<p>Matches potential students to selected tutor based on <code>INDEX</code><br>
 Format: <code>match INDEX c/t</code>
 Alias Format: <code>m INDEX c/t</code></p>
 </div>
@@ -150,6 +150,9 @@ Alias Format: <code>m INDEX c/t</code></p>
 </li>
 <li>
 <p>Only clients that have any matches based on subject, grade or location will be displayed.</p>
+</li>
+<li>
+<p>If the client have multiple grade or subject attributes, only the first grade or subject attribute is used to match any potential clients.</p>
 </li>
 <li>
 <p>Matched clients will be listed from the most number of matched attributes to the least number of matched attributes.</p>
@@ -178,7 +181,7 @@ At index 1 of student&#8217;s list, Jim is a student who requires tutors that ar
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-clients-code-find-code-since-v1-3"><a class="link" href="#locating-clients-code-find-code-since-v1-3">Locating clients: <code>find</code> {Since v1.3}</a></h3>
+<h3 id="locating-clients-code-find-code-code-since-v1-3-code"><a class="link" href="#locating-clients-code-find-code-code-since-v1-3-code">Locating clients: <code>find</code> <code>[Since v1.3]</code></a></h3>
 <div class="paragraph">
 <p>Finds clients that contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -192,6 +195,9 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <ul>
 <li>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p><strong>For grades only</strong> alias grades will match original grades. e.g <code>p2</code> will match <code>primary2</code>.</p>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
@@ -219,6 +225,10 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
+<p><code>find p2</code><br>
+Returns any client having grades <code>p2</code> or <code>primary2</code></p>
+</li>
+<li>
 <p><code>f Betsy Tim John</code><br>
 Returns any client having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
@@ -229,6 +239,44 @@ Returns any client having phone number <code>96528541</code></p>
 <li>
 <p><code>f blk</code><br>
 Returns any client having keyword <code>blk</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-match-feature-code-coming-in-v2-0-code"><a class="link" href="#auto-match-feature-code-coming-in-v2-0-code">Auto match feature <code>[coming in v2.0]</code></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When the user enters a new client. the system will auto generates a list of potential clients for this newly added client.</p>
+</li>
+<li>
+<p>This is to enhance the efficiency of our user and shorten the time needed for the user to match potential clients.</p>
+</li>
+<li>
+<p>The reason for this enhancement is to facilitate the user when a potential client makes a call to seek for assignments. With this enhancement, the system is able to generate a list of potential clients right after the client is added into the system. The user is then able to reply the client on the available assignments right away before the client even hangs up the phone.</p>
+</li>
+<li>
+<p>One possible way of implementing it is to call for matching command with the client info after the addclient command has successfully executed.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code"><a class="link" href="#match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code">Match multiple grade and subject attributes <code>[coming in v2.0]</code></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Currently, match command assumes all client has only one grade subject and location attribute. If a client has multiple grade attributes, match command only matches potential clients with his/her first grade attribute.</p>
+</li>
+<li>
+<p>Enhancement could be made to match all the Grade attributes respectively and list the matching result from the highest match to the lowest match.</p>
+</li>
+<li>
+<p>Only matched attributes should be highlighted.</p>
+</li>
+<li>
+<p>One possible way of implementing it is to change Grade, Subject and Location to List&lt;String&gt; and compare them one by one with other clients.</p>
 </li>
 </ul>
 </div>
@@ -399,11 +447,11 @@ The detailed code is shown below:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> User key in client index displayed with with client&#8217;s category. e.g <code>match 1 c/t</code></p>
+<p><strong>Alternative 1 (current choice):</strong> User key in client index displayed with with client&#8217;s category. e.g <code>match 1 c/t</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: There will be no mismatch since user specify the exact client to match with</p>
+<p>Pros: There will be no mismatch since user specify the exact client to match with.</p>
 </li>
 <li>
 <p>Cons: More user input and extra step is taken. User have to locate the client&#8217;s index first before using match function.</p>
@@ -412,11 +460,11 @@ The detailed code is shown below:</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> user key in the client&#8217;s name. e.g <code>match John</code></p>
+<p><strong>Alternative 2:</strong> user key in the client&#8217;s name. e.g <code>match John</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More convenient for user to operate, lesser steps</p>
+<p>Pros: More convenient for user to operate, lesser steps.</p>
 </li>
 <li>
 <p>Cons: If there are 2 John stored in the application, there is a chance for the application to match a wrong client.</p>
@@ -443,7 +491,7 @@ The detailed code is shown below:</p>
 <p>As illustrated above, match function currently highlights all the grades/subjects of a client as long as one of the grade/subject is matched.</p>
 </li>
 <li>
-<p>Future Implementation is to only highlight the respective matched grade/subject.</p>
+<p>Future Implementation could be done to only highlight the respective matched grade/subject.</p>
 </li>
 </ul>
 </div>
@@ -455,7 +503,7 @@ The detailed code is shown below:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 21:13:40 UTC
+Last updated 2018-04-15 04:28:38 UTC
 </div>
 </div>
 </body>

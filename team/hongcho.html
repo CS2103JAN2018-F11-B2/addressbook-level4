@@ -5,324 +5,379 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content=":forked from Team SE-EDU">
-<title>TuitionCor - Developer Guide</title>
-<link rel="stylesheet" href="stylesheets/gh-pages.css">
+<title>Lim Hong Cho - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>TuitionCor - Developer Guide</h1>
-<div class="details">
-<span id="author" class="author">:forked from Team SE-EDU</span><br>
-</div>
+<h1>Lim Hong Cho - Project Portfolio</h1>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="project-tuitioncor"><a class="link" href="#project-tuitioncor">PROJECT: TuitionCor</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>Team F11-B2</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
-</div>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a>
-<ul class="sectlevel2">
-<li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
-</ul>
-</li>
-<li><a href="#design">2. Design</a>
-<ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
-</ul>
-</li>
-<li><a href="#implementation">3. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#model">3.1. Model</a></li>
-<li><a href="#client-and-the-fields-of-client">3.2. Client and the fields of Client</a></li>
-<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
-<li><a href="#match-function">3.4. Match Function</a></li>
-<li><a href="#sort-feature">3.5. Sort feature</a></li>
-<li><a href="#closed-client-list">3.6. Closed client list</a></li>
-<li><a href="#close-feature">3.7. Close feature</a></li>
-<li><a href="#restore-feature">3.8. Restore feature</a></li>
-<li><a href="#switch-feature">3.9. Switch feature</a></li>
-<li><a href="#logging">3.10. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#documentation">4. Documentation</a>
-<ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
-</ul>
-</li>
-<li><a href="#Testing">5. Testing</a>
-<ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">6. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
-<ul class="sectlevel2">
-<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
-<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
-</ul>
-</li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
-<li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a>
-<ul class="sectlevel2">
-<li><a href="#use-case-matching-a-tutor">D.1. Use case: Matching a tutor</a></li>
-</ul>
-</li>
-<li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
-</ul>
-</li>
-<li><a href="#feature-contribution">Appendix I: Feature Contribution</a>
-<ul class="sectlevel2">
-<li><a href="#ngeow-shan-yong-destin">I.1. Ngeow Shan Yong Destin</a></li>
-<li><a href="#zhu-jiahui">I.2. Zhu Jiahui</a></li>
-<li><a href="#lim-hong-cho">I.3. Lim Hong Cho</a></li>
-</ul>
-</li>
-</ul>
+<hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p><strong>IntelliJ</strong> IDE</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-IntelliJ by default has Gradle and JavaFx plugins installed.<br>
-Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Fork this repo, and clone the fork to your computer</p>
-</li>
-<li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
-</li>
-<li>
-<p>Set up the correct JDK version for Gradle</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
-</li>
-<li>
-<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Click <code>Import Project</code></p>
-</li>
-<li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
-</li>
-<li>
-<p>Click <code>Open as Project</code></p>
-</li>
-<li>
-<p>Click <code>OK</code> to accept the default settings</p>
-</li>
-<li>
-<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
-This will generate all resources required by the application and tests.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
-</li>
-<li>
-<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
-<div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
-<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
+<p>TuitionCor is for those who <strong>prefer to use a desktop app for managing client information</strong>. More importantly, TuitionCor is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuitionCor can get your client management tasks done faster than traditional GUI apps.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
-</li>
-<li>
-<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
-</li>
-<li>
-<p>Click on the <code>Imports</code> tab to set the order</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
+<p><strong>Major enhancement</strong>: added <strong>close, restore and switch command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Close command enables user to be able to close a client which is either a student and tutor. The closed client will be stored and displayed in a closed client list.</p>
 </li>
 <li>
-<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
+<p>Restore command enables user to restore a previously closed client from the closed client list. The restored client will now be stored and displayed in active client list.</p>
+</li>
+<li>
+<p>Switch command allows user to toggle between active client list and closed client list.</p>
 </li>
 </ul>
 </div>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
-<div class="paragraph">
-<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level4</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level4</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.3. Setting up CI</a></h4>
-<div class="paragraph">
-<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
-</div>
-<div class="paragraph">
-<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
-<div class="paragraph">
-<p>When you are ready to start coding,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
+<p>Justification: This feature improves the product significantly because after a client is successfully assigned by the user, the client can be closed instead of deleting. This allows the user to maintain an organised and updated active client list containing unassigned clients only. Furthermore, information of past assigned clients can also be retrieved conveniently from the closed clients list if required. Clients can also be restored in an event that they become active again.</p>
 </li>
 <li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Suggested Programming Tasks to Get Started</em></a>.</p>
+<p>Highlights: This enhancement paves the foundation for further enhancement to TuitionCor.</p>
 </li>
-</ol>
+</ul>
 </div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a sort commands to allow sorting by name, subject, grade and location*</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F11-B2/main/blob/master/collated/functional/olimhc.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F11-B2/main/blob/master/collated/test/olimhc.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhanced find command to be able to match different grade formats and multiple grade fields. (Pull requests <a href="https://github.com/CS2103JAN2018-F11-B2/main/pull/121">#121</a>)</p>
+</li>
+<li>
+<p>Reworked the Ui to allow display of tutor and student list. (Pull requests <a href="https://github.com/CS2103JAN2018-F11-B2/main/pull/18">#18</a>)</p>
+</li>
+<li>
+<p>Added an extra status bar to allow users to know whether they are viewing active client list or closed client list. (Pull requests <a href="https://github.com/CS2103JAN2018-F11-B2/main/pull/91">#91</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Provided useful bug reports and suggestions for other teams. (Issues <a href="https://github.com/CS2103JAN2018-W13-B4/main/issues/218">#218</a>, <a href="https://github.com/CS2103JAN2018-W13-B4/main/issues/230">#230</a>, <a href="https://github.com/CS2103JAN2018-W13-B4/main/issues/224">#224</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a new Github plugin (TravisCi) to the team repo.</p>
+</li>
+<li>
+<p>Enabled auto publishing of documentation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/Architecture.png" alt="Architecture" width="600">
-</div>
-<div class="title">Figure 1. Architecture Diagram</div>
+<h3 id="sorting-a-client-sort-code-since-v1-3-code"><a class="link" href="#sorting-a-client-sort-code-since-v1-3-code">Sorting a client: 'sort' <code>[Since v1.3]</code></a></h3>
+<div class="paragraph">
+<p>Sorting tutor&#8217;s list based on name<br>
+Format: <code>sort n c/t</code><br>
+Alias Format: <code>so n c/t</code></p>
 </div>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+<p>Sorting tutor&#8217;s list based on location<br>
+Format: <code>sort l c/t</code><br>
+Alias Format: <code>so l c/t</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting tutor&#8217;s list based on grade<br>
+Format: <code>sort g c/t</code><br>
+Alias Format: <code>so g c/t</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting tutor&#8217;s list based on subject<br>
+Format: <code>sort s c/t</code><br>
+Alias Format: <code>so s c/t</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on name<br>
+Format: <code>sort n c/s</code><br>
+Alias Format: <code>so n c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on location<br>
+Format: <code>sort l c/s</code><br>
+Alias Format: <code>so l c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on grade<br>
+Format: <code>sort g c/s</code><br>
+Alias Format: <code>so g c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Sorting student&#8217;s list based on subject<br>
+Format: <code>sort s c/s</code><br>
+Alias Format: `so s c/s'</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Sorts the client based on the selected category, either 't' for tutors or 's' for students based on a chosen criteria 'n' for name, 'g' for grade, 's' for subject and 'l' for location.</p>
+</div>
+<div class="paragraph">
+<p>Sorting by name, grade and subjects are based on alphabetical order.</p>
+</div>
+<div class="paragraph">
+<p>Sorting by grade are based on ascending order of seniority (Kindergarten&#8594;Primary&#8594;Secondary&#8594;Junior College&#8594;University)</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sort l c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on location.</p>
+</li>
+<li>
+<p><code>sort s c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on subject.</p>
+</li>
+<li>
+<p><code>sort n c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on name.</p>
+</li>
+<li>
+<p><code>sort g c/t</code><br>
+Tutor&#8217;s list displayed will be sorted base on grade.</p>
+</li>
+<li>
+<p><code>sort l c/s</code><br>
+Student&#8217;s list displayed will be sorted base on location.</p>
+</li>
+<li>
+<p><code>sort s c/s</code><br>
+Student&#8217;s list displayed will be sorted base on subject.</p>
+</li>
+<li>
+<p><code>sort n c/s</code><br>
+Student&#8217;s list displayed will be sorted base on name.</p>
+</li>
+<li>
+<p><code>sort g c/s</code><br>
+Student&#8217;s list displayed will be sorted base on grade.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-a-client-code-close-code-code-since-v1-4-code"><a class="link" href="#closing-a-client-code-close-code-code-since-v1-4-code">Closing a client : <code>close</code> <code>[Since v1.4]</code></a></h3>
+<div class="paragraph">
+<p>Close an existing and active student in active student&#8217;s list.<br>
+Format: <code>close INDEX c/s</code><br>
+Alias Format: <code>cs INDEX c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Close an existing and active tutor in active student&#8217;s list.<br>
+Format: <code>close INDEX c/t</code><br>
+Alias Format: <code>cs INDEX c/t</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is only available when viewing the active client&#8217;s list. Use command word <code>switch</code> to toggle from closed list to active list.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Close the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Closed student or tutor will be removed from the active list. They can now be found in the closed list which is accessible by command word <code>switch</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="restoring-a-client-code-restore-code-code-since-v1-4-code"><a class="link" href="#restoring-a-client-code-restore-code-code-since-v1-4-code">Restoring a client : <code>restore</code> <code>[Since v1.4]</code></a></h3>
+<div class="paragraph">
+<p>Restore an existing and closed student in the closed student&#8217;s list.<br>
+Format: <code>restore INDEX c/s</code><br>
+Alias Format: <code>res INDEX c/s</code></p>
+</div>
+<div class="paragraph">
+<p>Restore an existing and closed tutor in the closed tutor&#8217;s list.<br>
+Format: <code>restore INDEX c/t</code><br>
+Alias Format: <code>res INDEX c/t</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is only available when viewing the closed client&#8217;s list. Use command word <code>switch</code> to toggle from active list to closed list.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Restore the client based on selected category either c/s for students or c/t for tutors at the specified <code>INDEX</code>. The index refers to the index number shown in the last tutors or students listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Restored student or tutor will be removed from the closed list. They can now be found in the active list which is accessible by command word <code>switch</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-between-active-and-closed-client-s-list-code-switch-code-code-since-v1-4-code"><a class="link" href="#switching-between-active-and-closed-client-s-list-code-switch-code-code-since-v1-4-code">Switching between active and closed client&#8217;s list : <code>switch</code> <code>[Since v1.4]</code></a></h3>
+<div class="paragraph">
+<p>Switch the display between active and closed client&#8217;s list.<br>
+Format: <code>switch</code><br>
+Alias Format: <code>sw</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="integration-with-gmail-code-coming-in-v2-0-code"><a class="link" href="#integration-with-gmail-code-coming-in-v2-0-code">Integration with Gmail <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Link a valid Gmail account to TuitionCor.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+TuitionCor will only be linked to <strong>one</strong> valid Gmail account at any point of time
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>set e/EMAIL pw/PASSWORD</code><br>
+A success message of the format <em>Successfully linked EMAIL to TuitionCor</em> will be displayed for successful linking.</p>
+</div>
+<div class="paragraph">
+<p>A failure message of the format <em>Failed to link EMAIL to TuitionCor</em> will be displayed for unsuccessful linking. Please check that you have inputted the correct email and password.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set e/BestCoordinatorInSg@gmail.com pw/Iamthebest</code><br>
+Links Gmail account <code>BestCoordinatorInSg@gmail.com</code> to TuitionCor upon a successful login.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email-notification-function-code-coming-in-v2-0-code"><a class="link" href="#email-notification-function-code-coming-in-v2-0-code">Email notification function <code>[coming in v2.0]</code></a></h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please ensure that you have successfully linked a Gmail account to TuitionCor before you are able to use this function
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Parameters:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>notify INDEX c/CATEGORY INDEX c/CATEGORY</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -331,87 +386,11 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103JAN2018-F11-B2/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The first <code>INDEX c/CATEGORY</code> refers to the client you would like to notify and send an email with the relevant contact details.<br>
+The second <code>INDEX c/CATEGORY</code> refers to the client whose information you would like to send to the former client.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
-</li>
-<li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design)</p>
-</li>
-<li>
-<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The rest of the App consists of four components.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
-</li>
-<li>
-<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
-</li>
-<li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
-</li>
-<li>
-<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Each of the four components</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
-</li>
-<li>
-<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
-</div>
-<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
-<div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
-</div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -420,19 +399,25 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Both CATEGORY cannot be referring to the same category.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
+<p>Examples:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
-</div>
-<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>notify 1 c/s 1 c/t</code><br>
+An email will be send to the first student on the students list using your linked Gmail account. The email will contain relevant information regarding the first tutor on the tutors list.</p>
+</li>
+<li>
+<p><code>notify 2 c/t 1 c/s</code><br>
+An email will be send to the second tutor on the tutors list using your linked Gmail account. The email will contain relevant information regarding the first student on the students list.</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -441,999 +426,159 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+The email notification sent to will be based on the email in the client&#8217;s information.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>The sections below give more details of each component.</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
-</div>
-<div class="title">Figure 5. Structure of the UI Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>TutorListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component,</p>
-</div>
+<h3 id="auto-match-feature-code-coming-in-v2-0-code"><a class="link" href="#auto-match-feature-code-coming-in-v2-0-code">Auto match feature <code>[coming in v2.0]</code></a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
+<p>When the user enters a new client. the system will auto generates a list of potential clients for this newly added client.</p>
 </li>
 <li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+<p>This is to enhance the efficiency of our user and shorten the time needed for the user to match potential clients.</p>
 </li>
 <li>
-<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+<p>The reason for this enhancement is to facilitate the user when a potential client makes a call to seek for assignments. With this enhancement, the system is able to generate a list of potential clients right after the client is added into the system. The user is then able to reply the client on the available assignments right away before the client even hangs up the phone.</p>
+</li>
+<li>
+<p>One possible way of implementing it is to call for matching command with the client info after the addclient command has successfully executed.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
-</div>
-<div class="title">Figure 7. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a></div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> :
-<a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
-</li>
-<li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a client) and/or raise events.</p>
-</li>
-<li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1 c/s")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
-</div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1 c/s</code> Command</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
-</div>
-<div class="title">Figure 9. Structure of the Model Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code>,</p>
-</div>
+<h3 id="match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code"><a class="link" href="#match-multiple-grade-and-subject-attributes-code-coming-in-v2-0-code">Match multiple grade and subject attributes <code>[coming in v2.0]</code></a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+<p>Currently, match command assumes all client has only one grade subject and location attribute. If a client has multiple grade attributes, match command only matches potential clients with his/her first grade attribute.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>Enhancement could be made to match all the Grade attributes respectively and list the matching result from the highest match to the lowest match.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Client&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>Only matched attributes should be highlighted.</p>
 </li>
 <li>
-<p>does not depend on any of the other three components.</p>
+<p>One possible way of implementing it is to change Grade, Subject and Location to List&lt;String&gt; and compare them one by one with other clients.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
-</div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Storage</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>can save the Address Book data in xml format and read it back.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
-<div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
-</div>
-<div class="sect2">
-<h3 id="model"><a class="link" href="#model">3.1. Model</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The AddressBook currently stores Clients in separate UniqueClientList (students, tutors, closedStudents, closedTutors) depending on category the Client belongs to.</p>
-</div>
-<div class="paragraph">
-<p>Due to students and tutors being stored as 2 separate UniqueClientList, commands that work on only 1 of the 2 list (eg. addclient, edit, delete etc.) would require the model to either expose 2 functions for the Command to call or to take in a Category argument which the model would then handle as shown below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/StudentTutorList.png" alt="StudentTutorList" width="800">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TuitionCor folder.</p>
 </div>
 </div>
-<div class="paragraph">
-<p>Commands that work only on either students or tutors would have to declare which Category they wish to work on in the command input. For example for the delete command would have to input <code>delete 1 c/s</code> to represent that they wish to delete from students.</p>
 </div>
-<div class="paragraph">
-<p>Hence, commands that work only on either students or tutors have to either be split into 2 functions or take in an additional argument stating which UniqueClientList to work on as shown below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SeparateFunctionForStudentTutor.png" alt="SeparateFunctionForStudentTutor" width="800">
-</div>
-<div class="title">Figure 11. Example of splitting call into 2 functions</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>public class updatePerson(Client target, Client editedClient, Category category) {
-    if (category.isStudent) {
-        // ... work on students ...
-    } else if (category.isTutor) {
-        // ... work on tutors ...
-    }
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example of function that takes in additional argument to determine whether to work on students or tutors</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-of-model"><a class="link" href="#design-considerations-of-model">3.1.2. Design Considerations of Model</a></h4>
-<div class="sect4">
-<h5 id="aspect-keeping-students-and-tutors-in-1-or-2-list"><a class="link" href="#aspect-keeping-students-and-tutors-in-1-or-2-list">Aspect: Keeping students and tutors in 1 or 2 list</a></h5>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Keep students and tutors separated in 2 UniqueClientList</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Does not have to do an additional search through the list to differentiate students and tutors</p>
+<p><strong>AddClient</strong> <code>addclient c/CATEGORY n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203; l/LOCATION g/GRADE s/SUBJECT</code><br>
+e.g. <code>addclient c/t n/Tutor1 p/98765432 a/Blk 10 Singapore, #01-239 e/testing@example.com t/family l/north g/p3 s/physics</code><br>
+Alias: <code>ac</code></p>
 </li>
 <li>
-<p>Cons: Calls that work on only one of the 2 list would have to be separated.</p>
-</li>
-</ul>
-</div>
+<p><strong>Clear</strong> : <code>clear</code><br>
+Alias: <code>c</code></p>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Keep all clients in the same UniqueClientList and differentiate them using the clients' Category value</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code><br>
+Alias: <code>d</code></p>
 </li>
 <li>
-<p>Cons: Have to run an additional search through the list to differentiate students and tutors which could be slow when database is large.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-whether-to-have-different-commands-for-students-and-tutors"><a class="link" href="#aspect-whether-to-have-different-commands-for-students-and-tutors">Aspect: Whether to have different commands for students and tutors</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make the Category prefix compulsory for any command that work on only 1 list</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Minimises number of commands and use already existing prefix instead.</p>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code><br>
+Alias: <code>e</code></p>
 </li>
 <li>
-<p>Cons: Needs to parse an additional prefix</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have separate commands (eg. deleteStudent and deleteTutor instead of just delete)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p><strong>Remove</strong> : <code>remove INDEX c/CATEGORY s/SUBJECT</code><br>
+e.g. <code>remove 1 c/s s/math</code>
+Alias: <code>re</code></p>
 </li>
 <li>
-<p>Cons: Large number of duplicated commands.</p>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code><br>
+Alias: <code>f</code></p>
 </li>
-</ul>
-</div>
+<li>
+<p><strong>Match</strong> : <code>match INDEX CATEGORY</code><br>
+e.g. <code>match 1 c/s</code><br>
+Alias: <code>m</code></p>
+</li>
+<li>
+<p><strong>Sort</strong> : <code>sort TYPE CATEGORY</code><br>
+eg. <code>sort n c/s</code><br>
+Alias: <code>so</code></p>
+</li>
+<li>
+<p><strong>Close</strong> : <code>close INDEX CATEGORY</code><br>
+eg. <code>close 1 c/s</code><br>
+Alias: <code>cs</code></p>
+</li>
+<li>
+<p><strong>Restore</strong> : <code>restore INDEX CATEGORY</code><br>
+eg. <code>restore 1 c/s</code><br>
+Alias: <code>res</code></p>
+</li>
+<li>
+<p><strong>Switch</strong> : <code>switch</code><br>
+Alias: <code>sw</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code><br>
+Alias: <code>l</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code><br>
+Alias: <code>h</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code><br>
+Alias: <code>u</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code><br>
+Alias: <code>r</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="client-and-the-fields-of-client"><a class="link" href="#client-and-the-fields-of-client">3.2. Client and the fields of Client</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The Client Class extends Person that consists of 5 fields (name, phone, email, address, tags) while Client has additional 4 fields (location, grade, subject, category).</p>
-</div>
-<div class="paragraph">
-<p>All of the fields uses a specific class that takes a single String as it&#8217;s value as shown below.
-.Example of Subject field with it&#8217;s value
-image::ClientFieldExample.png[width="800"]</p>
-</div>
-<div class="paragraph">
-<p>Hence, for fields that should actually take in multiple values (eg. Subject taking in "math physics chemistry") are currently stored as a single String while operations that work on the individual keywords have to manually split them into separate keywords through String operations.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>private static Client createEditedPerson(Client personToEdit, Subject toRemove) {
-        assert personToEdit != null;
-
-        String editSubjects = personToEdit.getSubject().value;
-        ArrayList&lt;String&gt; editSubjectArray = new ArrayList&lt;&gt;(Arrays.asList(editSubjects.split(" ")));
-        editSubjectArray.remove(toRemove.value);
-
-        StringBuilder sb = new StringBuilder();
-        .....</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see from this section taken from Remove Command, after getting the String of the value of Subject, it has to use String operations to split it based on whitespace and reconstruct the string again later.</p>
-</div>
-<div class="paragraph">
-<p>On the other hand, a client can have multiple Tags as the Tag are stored through an UniqueTagList.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-to-store-multiple-values-in-a-single-string-or-as-separate-objects-in-a-list"><a class="link" href="#aspect-to-store-multiple-values-in-a-single-string-or-as-separate-objects-in-a-list">Aspect: To store multiple values in a single String or as separate objects in a list</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>(Alternative 1 (current choice)):</strong> Store all the values as a single String and have commands that work on individual keywords split them.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Most commands simply require to read the value directly as a String and does not require to work on individual keyword. Does not require multiple types of unique list to be created for each of the field.</p>
-</li>
-<li>
-<p>Cons: Lacks in flexibility in being able to individual values.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>(Alternative 2)</strong> Create a list similar to UniqueTagList for each field that requires the storage of multiple values</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Allows for greater flexibility and the ability to sync the various existing values in the AddressBook.</p>
-</li>
-<li>
-<p>Cons: Require many lists to be stored. Whenever more fields are added in future enhancements, it could potentially require the excessive creation of a new type unique list each time.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
-</div>
-<div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are implemented this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
-
-        executeUndoableCommand();
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... delete logic ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
-</div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
+</tbody>
 </table>
-</div>
-<div class="paragraph">
-<p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when popping the <code>undoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
-</li>
-<li>
-<p>Cons: Hard for new developers to understand the template pattern.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Does not involve the template pattern, easier for new developers to understand.</p>
-</li>
-<li>
-<p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">Aspect: Type of commands that can be undone/redone</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the address book (<code>add</code>, <code>clear</code>, <code>edit</code>).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We only revert changes that are hard to change back (the view can easily be re-modified as no data are * lost).</p>
-</li>
-<li>
-<p>Cons: User might think that undo also applies when the list is modified (undoing filtering for example), * only to realize that it does not do that, after executing <code>undo</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Include all commands.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Might be more intuitive for the user.</p>
-</li>
-<li>
-<p>Cons: User have no way of skipping such commands if he or she just want to reset the state of the address * book and not the view.
-<strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to understand for new Computer Science student undergraduates to understand, who are likely to be * the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update * both <code>HistoryManager</code> and <code>UndoRedoStack</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two * different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
 <div class="sect2">
-<h3 id="match-function"><a class="link" href="#match-function">3.4. Match Function</a></h3>
+<h3 id="closed-client-list"><a class="link" href="#closed-client-list">Closed client list</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The match function behaves like a multi-layer find function. It helps to match clients that share one or more similar attributes.</p>
-</div>
-<div class="paragraph">
-<p>For example, John is a Tutor client that is staying in the <code>west</code> of Singapore, and is looking for students that requires help in <code>s4</code>(secondary4) <code>math</code>.</p>
-</div>
-<div class="paragraph">
-<p>first, locate John by either using <code>find John</code> or finding him in the tutor list. Observe John&#8217;s Index number.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchSequence1.png" alt="MatchSequence1" width=""800'">
-</div>
-</div>
-<div class="paragraph">
-<p>from the sample image above, we can see that John&#8217;s index number is 6 in tutors list.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchSequence2.png" alt="MatchSequence2" width=""800'">
-</div>
-</div>
-<div class="paragraph">
-<p>Keying in the command in the format <code>match</code> <code>INDEX</code> <code>Category</code>. eg: <code>match 6 c/t</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchSequence3.png" alt="MatchSequence3" width=""800'">
-</div>
-</div>
-<div class="paragraph">
-<p>Match function returns a list with all the potential students for John with the highest match (all attributes matched) on top of the list.</p>
-</div>
-<div class="paragraph">
-<p>All the matched attributes are highlighted in orange.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="step-by-step-breakdown"><a class="link" href="#step-by-step-breakdown">3.4.2. Step by Step breakdown</a></h4>
-<div class="paragraph">
-<p>match function behaves like at double-layered find function. When a user enters <code>match 1 c/t</code>, the system will first need to extract the first tutor from the tutor&#8217;s list.</p>
-</div>
-<div class="paragraph">
-<p>To do this, first we need to identify the client is a tutor or a student.</p>
-</div>
-<div class="paragraph">
-<p>The detailed code is shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (category.isStudent()) {
-            lastShownList = model.getFilteredStudentList();
-        } <span class="keyword">else</span> {
-            lastShownList = model.getFilteredTutorList();
-        }
-        clientToMatch = lastShownList.get(targetIndex.getZeroBased());</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the user input format is invalid, an exception will be thrown
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>When the client is located, his data (location, grade and subject) are then sent to <code>MatchContainsKeywordsPredicate.java</code></p>
-</div>
-<div class="paragraph">
-<p>The detailed code is shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Override</span>
-    <span class="directive">public</span> <span class="type">boolean</span> test(Client other) {
-        <span class="type">boolean</span> isMatch = <span class="predefined-constant">false</span>;
-
-        <span class="keyword">if</span>(other.getLocation().equals(client.getLocation())) {
-            isMatch = <span class="predefined-constant">true</span>;
-        }
-        <span class="keyword">if</span>(other.getGrade().equals(client.getGrade())) {
-            isMatch = <span class="predefined-constant">true</span>;
-        }
-        <span class="keyword">if</span>(other.getSubject().equals(client.getSubject())) {
-            isMatch = <span class="predefined-constant">true</span>;
-        }
-        <span class="keyword">return</span> isMatch;
-    }</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If there is no match client found, an empty list will be shown.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchZeroClient.png" alt="MatchZeroClient" width=""800'">
-</div>
-</div>
-<div class="paragraph">
-<p>If the input client is a tutor, the tutor list will only be showing the particular of the input client.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchSequence3.png" alt="MatchSequence3" width=""800'">
-</div>
-</div>
-<div class="paragraph">
-<p>this is done in MatchContainsPersonsPredicate.java
-The detailed code is shown below:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> test(Client other) {
-        <span class="keyword">return</span> other.toString().equals(client.toString());
-    }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A sequence diagram is shown below to show the current design when user input "match 1 c/s"</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchSequenceDiagram.png" alt="MatchSequenceDiagram" width="800">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.3. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-userinput"><a class="link" href="#aspect-userinput">Aspect: UserInput</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> User key in client index displayed with with client&#8217;s category. e.g <code>match 1 c/t</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: There will be no mismatch since user specify the exact client to match with.</p>
-</li>
-<li>
-<p>Cons: More user input and extra step is taken. User have to locate the client&#8217;s index first before using match function.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> user key in the client&#8217;s name. e.g <code>match John</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More convenient for user to operate, lesser steps.</p>
-</li>
-<li>
-<p>Cons: If there are 2 John stored in the application, there is a chance for the application to match a wrong client.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="future-implementations"><a class="link" href="#future-implementations">3.4.4. Future Implementations</a></h4>
-<div class="sect4">
-<h5 id="optimise-match-function-to-accommodate-multiple-code-grade-code-and-code-subject-code-fields-per-client"><a class="link" href="#optimise-match-function-to-accommodate-multiple-code-grade-code-and-code-subject-code-fields-per-client">Optimise match function to accommodate multiple <code>Grade</code> and <code>Subject</code> fields per client.</a></h5>
-<div class="imageblock">
-<div class="content">
-<img src="images/MatchFunctionFutureImplementation.png" alt="MatchFunctionFutureImplementation" width="800">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>As illustrated above, match function currently highlights all the grades/subjects of a client as long as one of the grade/subject is matched.</p>
-</li>
-<li>
-<p>Future Implementation could be done to only highlight the respective matched grade/subject.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-feature"><a class="link" href="#sort-feature">3.5. Sort feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The sort command is facilitated by a SortCommandParser which implements Parser&lt;SortCommand&gt;. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
-</div>
-<div class="paragraph">
-<p>Different types of sorting methods extends abstract class SortCommand which extends Command resides in Logic as shown in the model below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SortCommandClassDiagram.PNG" alt="SortCommandClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The different type of sort command are implemented this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SortByNameCommand</span> <span class="directive">extends</span> SortCommand {
-     <span class="annotation">@Override</span>
-     <span class="directive">public</span> CommandResult execute() {
-         <span class="comment">// ... list logic ...</span>
-     }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByLocationCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByGradeCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SortBySubjectCommand</span> <span class="directive">extends</span> SortCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When the user wants to sort the specific list according to his/her needs, SortCommandParser will parse the user input and decide which type of SortCommand to invoke.
-An example of the input required "sort l c/t" which sorts tutor&#8217;s list by location.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> SortCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
-    <span class="predefined-type">String</span> trimmedArgs = args.trim();
-        <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(
-                <span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the user input format is invalid, an ParseException will be thrown and an error message will be displayed to user.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>A sequence diagram is shown below to show the current design when user input "sort l c/t".</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SortSequenceDiagram.PNG" alt="SortSequenceDiagram" width=""800'">
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-implementation-of-the-different-sort-commands"><a class="link" href="#aspect-implementation-of-the-different-sort-commands">Aspect: Implementation of the different sort commands</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make SortCommand an abstract method and allow the different sort commands to inherit from it.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able to reuse constants from SortCommand</p>
-</li>
-<li>
-<p>Cons: SortCommand might be redundant</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Implement multiple sort commands which extends command directly</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Might be easier to implement</p>
-</li>
-<li>
-<p>Cons: Messy</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect5">
-<h6 id="aspect-parsing-of-user-input-for-sort-command"><a class="link" href="#aspect-parsing-of-user-input-for-sort-command">Aspect: Parsing of user input for sort command</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> SortCommandParser parse one single string user input. Eg. 'sort l c/t' which sort tutor list by location.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able to utilise the current Logic and Model Component for command inputs</p>
-</li>
-<li>
-<p>Cons: Less intuitive to user.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Allow multiple user input of before parsing to a command. Eg. User input sort and system will prompts for user to input which list to sort.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This is much more intuitive for user and allows further enhancements which require multiple command inputs.</p>
-</li>
-<li>
-<p>Cons: This will require to overhaul of Logic and Model Component.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="closed-client-list"><a class="link" href="#closed-client-list">3.6. Closed client list</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The closed client list is where closed clients students or tutors information are stored and displayed.</p>
 </div>
@@ -1523,7 +668,7 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-integration-of-commands-which-were-unique-to-active-client-list-to-closed-client-list"><a class="link" href="#aspect-integration-of-commands-which-were-unique-to-active-client-list-to-closed-client-list">Aspect: Integration of commands which were unique to active client list to closed client list.</a></h5>
 <div class="ulist">
@@ -1560,9 +705,163 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect2">
-<h3 id="close-feature"><a class="link" href="#close-feature">3.7. Close feature</a></h3>
+<h3 id="sort-feature"><a class="link" href="#sort-feature">Sort feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The sort command is facilitated by a SortCommandParser which implements Parser&lt;SortCommand&gt;. The sort function supports sorting of different fields, namely location, grade, subject and name, which updates the list according to the sorting method.</p>
+</div>
+<div class="paragraph">
+<p>Different types of sorting methods extends abstract class SortCommand which extends Command resides in Logic as shown in the model below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortCommandClassDiagram.PNG" alt="SortCommandClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The different type of sort command are implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SortByNameCommand</span> <span class="directive">extends</span> SortCommand {
+     <span class="annotation">@Override</span>
+     <span class="directive">public</span> CommandResult execute() {
+         <span class="comment">// ... list logic ...</span>
+     }
+}
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByLocationCommand</span> <span class="directive">extends</span> SortCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// ... list logic ...</span>
+    }
+}
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SortByGradeCommand</span> <span class="directive">extends</span> SortCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// ... list logic ...</span>
+    }
+}
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SortBySubjectCommand</span> <span class="directive">extends</span> SortCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// ... list logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the user wants to sort the specific list according to his/her needs, SortCommandParser will parse the user input and decide which type of SortCommand to invoke.
+An example of the input required "sort l c/t" which sorts tutor&#8217;s list by location.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> SortCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+    <span class="predefined-type">String</span> trimmedArgs = args.trim();
+        <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(
+                <span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user input format is invalid, an ParseException will be thrown and an error message will be displayed to user.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A sequence diagram is shown below to show the current design when user input "sort l c/t".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortSequenceDiagram.PNG" alt="SortSequenceDiagram" width=""800'">
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-implementation-of-the-different-sort-commands"><a class="link" href="#aspect-implementation-of-the-different-sort-commands">Aspect: Implementation of the different sort commands</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Make SortCommand an abstract method and allow the different sort commands to inherit from it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to reuse constants from SortCommand</p>
+</li>
+<li>
+<p>Cons: SortCommand might be redundant</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement multiple sort commands which extends command directly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Might be easier to implement</p>
+</li>
+<li>
+<p>Cons: Messy</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-parsing-of-user-input-for-sort-command"><a class="link" href="#aspect-parsing-of-user-input-for-sort-command">Aspect: Parsing of user input for sort command</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> SortCommandParser parse one single string user input. Eg. 'sort l c/t' which sort tutor list by location.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to utilise the current Logic and Model Component for command inputs</p>
+</li>
+<li>
+<p>Cons: Less intuitive to user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow multiple user input of before parsing to a command. Eg. User input sort and system will prompts for user to input which list to sort.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This is much more intuitive for user and allows further enhancements which require multiple command inputs.</p>
+</li>
+<li>
+<p>Cons: This will require to overhaul of Logic and Model Component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="close-feature"><a class="link" href="#close-feature">Close feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The close command allows users to remove a particular client from the active client&#8217;s list and stores it in the closed client&#8217;s list.</p>
 </div>
@@ -1620,12 +919,12 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/CloseSequenceDiagram.PNG" alt="CloseSequenceDiagram" width="800">
+<img src="../images/CloseSequenceDiagram.PNG" alt="CloseSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-the-close-command"><a class="link" href="#aspect-implementation-of-the-close-command">Aspect: Implementation of the close command</a></h5>
 <div class="ulist">
@@ -1662,9 +961,9 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect2">
-<h3 id="restore-feature"><a class="link" href="#restore-feature">3.8. Restore feature</a></h3>
+<h3 id="restore-feature"><a class="link" href="#restore-feature">Restore feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The restore command allows users to remove a particular client from the closed client&#8217;s list and restore it back to the active client&#8217;s list.</p>
 </div>
@@ -1725,15 +1024,15 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/RestoreSequenceDiagram.PNG" alt="RestoreSequenceDiagram" width="800">
+<img src="../images/RestoreSequenceDiagram.PNG" alt="RestoreSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switch-feature"><a class="link" href="#switch-feature">3.9. Switch feature</a></h3>
+<h3 id="switch-feature"><a class="link" href="#switch-feature">Switch feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends Command.</p>
 </div>
@@ -1853,12 +1152,12 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SwitchSequenceDiagram.PNG" alt="SwitchSequenceDiagram" width="800">
+<img src="../images/SwitchSequenceDiagram.PNG" alt="SwitchSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-switch-command"><a class="link" href="#aspect-implementation-of-switch-command">Aspect: Implementation of switch command</a></h5>
 <div class="ulist">
@@ -1895,14 +1194,14 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1933,7 +1232,7 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1941,7 +1240,7 @@ user is attempts to use a command unique to active list view while viewing close
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
@@ -1959,20 +1258,20 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1997,18 +1296,18 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+<img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 1. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
+<h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -2070,7 +1369,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -2112,7 +1411,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -2130,41 +1429,41 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
 <div class="paragraph">
 <p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="{repoURL}/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -2179,7 +1478,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -2197,15 +1496,15 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Section A.1, &#8220;Improving each component&#8221;</a>.</p>
+<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Improving each component</a>.</p>
 </li>
 <li>
-<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Section A.2, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
+<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Creating a new command: <code>remark</code></a> explains how to go about adding such a feature.</p>
 </li>
 </ol>
 </div>
 <div class="sect2">
-<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></h3>
+<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">Improving each component</a></h3>
 <div class="paragraph">
 <p>Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).</p>
 </div>
@@ -2220,7 +1519,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8221;</a> before attempting to modify the <code>Logic</code> component.
+Do take a look at <a href="#Design-Logic">[Design-Logic]</a> before attempting to modify the <code>Logic</code> component.
 </td>
 </tr>
 </table>
@@ -2238,10 +1537,10 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
+<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="{repoURL}/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="{repoURL}/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
+<p><a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
 </li>
 </ul>
 </div>
@@ -2251,7 +1550,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the switch statement in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
+<p>Modify the switch statement in <a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
 </li>
 <li>
 <p>Add new tests for each of the aliases that you have added.</p>
@@ -2283,7 +1582,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8221;</a> before attempting to modify the <code>Model</code> component.
+Do take a look at <a href="#Design-Model">[Design-Model]</a> before attempting to modify the <code>Model</code> component.
 </td>
 </tr>
 </table>
@@ -2301,13 +1600,13 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
+<p>The <a href="{repoURL}/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="{repoURL}/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
 </li>
 <li>
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="{repoURL}/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="{repoURL}/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -2317,10 +1616,10 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="{repoURL}/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
 </li>
 <li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
+<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="{repoURL}/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="{repoURL}/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
 </li>
 <li>
 <p>Add new tests for each of the new public methods that you have added.</p>
@@ -2330,7 +1629,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. This may cause some tests to fail. See issue  <a href="https://github.com/se-edu/addressbook-level4/issues/753"><code>#753</code></a> for more information about this flaw.</p>
+<p>The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the <a href="{repoURL}/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. This may cause some tests to fail. See issue  <a href="https://github.com/se-edu/addressbook-level4/issues/753"><code>#753</code></a> for more information about this flaw.</p>
 </li>
 <li>
 <p>The solution PR has a temporary fix for the flaw mentioned above in its first commit.</p>
@@ -2359,7 +1658,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</a> before attempting to modify the <code>UI</code> component.
+Do take a look at <a href="#Design-Ui">[Design-Ui]</a> before attempting to modify the <code>UI</code> component.
 </td>
 </tr>
 </table>
@@ -2373,7 +1672,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-tag-before.png" alt="getting started ui tag before" width="300">
+<img src="../images/getting-started-ui-tag-before.png" alt="getting started ui tag before" width="300">
 </div>
 </div>
 <div class="paragraph">
@@ -2381,7 +1680,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-tag-after.png" alt="getting started ui tag after" width="300">
+<img src="../images/getting-started-ui-tag-after.png" alt="getting started ui tag after" width="300">
 </div>
 </div>
 <div class="sidebarblock">
@@ -2393,13 +1692,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>The tag labels are created inside <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
+<p>The tag labels are created inside <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
 </li>
 <li>
 <p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
 </li>
 <li>
-<p>You may wish to modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
+<p>You may wish to modify <a href="{repoURL}/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
 </li>
 </ul>
 </div>
@@ -2430,13 +1729,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="{repoURL}/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-result-before.png" alt="getting started ui result before" width="200">
+<img src="../images/getting-started-ui-result-before.png" alt="getting started ui result before" width="200">
 </div>
 </div>
 <div class="paragraph">
@@ -2444,7 +1743,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-result-after.png" alt="getting started ui result after" width="200">
+<img src="../images/getting-started-ui-result-after.png" alt="getting started ui result after" width="200">
 </div>
 </div>
 <div class="sidebarblock">
@@ -2456,10 +1755,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
+<p><a href="{repoURL}/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="{repoURL}/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="{repoURL}/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
 </li>
 <li>
-<p>Refer to <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
+<p>Refer to <a href="{repoURL}/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
 </li>
 </ul>
 </div>
@@ -2469,10 +1768,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
 </li>
 <li>
 <p>You can write two different kinds of tests to ensure that the functionality works:</p>
@@ -2482,7 +1781,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <p>The unit tests for <code>ResultDisplay</code> can be modified to include verification of the color.</p>
 </li>
 <li>
-<p>The system tests <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
+<p>The system tests <a href="{repoURL}/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
 </li>
 </ul>
 </div>
@@ -2506,13 +1805,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify the <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
+<p>Modify the <a href="{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-status-before.png" alt="getting started ui status before" width="500">
+<img src="../images/getting-started-ui-status-before.png" alt="getting started ui status before" width="500">
 </div>
 </div>
 <div class="paragraph">
@@ -2520,7 +1819,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/getting-started-ui-status-after.png" alt="getting started ui status after" width="500">
+<img src="../images/getting-started-ui-status-after.png" alt="getting started ui status after" width="500">
 </div>
 </div>
 <div class="sidebarblock">
@@ -2532,10 +1831,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
+<p><a href="{repoURL}/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
+<p><a href="{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
 </li>
 </ul>
 </div>
@@ -2545,16 +1844,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
+<p>Modify the constructor of <a href="{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
+<p>Use <a href="{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
 </li>
 <li>
-<p>For tests, modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
+<p>For tests, modify <a href="{repoURL}/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
+<p>For system tests, modify <a href="{repoURL}/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -2580,7 +1879,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
+Do take a look at <a href="#Design-Storage">[Design-Storage]</a> before attempting to modify the <code>Storage</code> component.
 </td>
 </tr>
 </table>
@@ -2598,10 +1897,10 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="ulist">
 <ul>
 <li>
-<p>Add the API method in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
+<p>Add the API method in <a href="{repoURL}/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
 </li>
 <li>
-<p>Implement the logic in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
+<p>Implement the logic in <a href="{repoURL}/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="{repoURL}/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
 </li>
 </ul>
 </div>
@@ -2625,7 +1924,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 </div>
 </div>
 <div class="sect2">
-<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></h3>
+<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">Creating a new command: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
 </div>
@@ -2633,7 +1932,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
 </div>
 <div class="sect3">
-<h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
+<h4 id="description"><a class="link" href="#description">Description</a></h4>
 <div class="paragraph">
 <p>Edits the remark for a person specified in the <code>INDEX</code>.<br>
 Format: <code>remark INDEX r/[REMARK]</code></p>
@@ -2655,7 +1954,7 @@ Removes the remark for the first person.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">A.2.2. Step-by-step Instructions</a></h4>
+<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">Step-by-step Instructions</a></h4>
 <div class="sect4">
 <h5 id="step-1-logic-teach-the-app-to-accept-remark-which-does-nothing"><a class="link" href="#step-1-logic-teach-the-app-to-accept-remark-which-does-nothing">[Step 1] Logic: Teach the app to accept 'remark' which does nothing</a></h5>
 <div class="paragraph">
@@ -2667,10 +1966,10 @@ Removes the remark for the first person.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/commands/UndoableCommand.java"><code>UndoableCommand</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
+<p>Add a <code>RemarkCommand</code> that extends <a href="{repoURL}/src/main/java/seedu/address/logic/commands/UndoableCommand.java"><code>UndoableCommand</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -2683,7 +1982,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandTest</code> that tests that <code>executeUndoableCommand()</code> throws an Exception.</p>
 </li>
 <li>
-<p>Add new test method to <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
+<p>Add new test method to <a href="{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -2705,7 +2004,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
@@ -2722,7 +2021,7 @@ Removes the remark for the first person.</p>
 for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
+<p>Modify <a href="{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
 </li>
 </ol>
 </div>
@@ -2730,7 +2029,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
+<p>Let&#8217;s add a placeholder on all our <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2738,10 +2037,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
+<p>Add a <code>Label</code> with any random text inside <a href="{repoURL}/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
 </li>
 <li>
-<p>Add FXML annotation in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
+<p>Add FXML annotation in <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
 </li>
 </ol>
 </div>
@@ -2751,7 +2050,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
+<p>Modify <a href="{repoURL}/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
 </li>
 </ol>
 </div>
@@ -2759,7 +2058,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
 <div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
+<p>We have to properly encapsulate the remark in our <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2767,7 +2066,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to model component (you can copy from <a href="{repoURL}/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -2788,7 +2087,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2796,13 +2095,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </li>
 <li>
 <p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
 </li>
 </ol>
 </div>
@@ -2810,7 +2109,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>XmlAdaptedPerson</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="{repoURL}/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2836,7 +2135,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="{repoURL}/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -2844,10 +2143,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="{repoURL}/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>Person</code> in <a href="{repoURL}/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
 </li>
 </ol>
 </div>
@@ -2855,7 +2154,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Our remark label in <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
+<p>Our remark label in <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2863,7 +2162,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
 </li>
 </ol>
 </div>
@@ -2873,7 +2172,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B2/main/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
+<p>Modify <a href="{repoURL}/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
 </li>
 </ol>
 </div>
@@ -2906,7 +2205,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="full-solution"><a class="link" href="#full-solution">A.2.3. Full Solution</a></h4>
+<h4 id="full-solution"><a class="link" href="#full-solution">Full Solution</a></h4>
 <div class="paragraph">
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/599">PR</a> for the step-by-step solution.</p>
 </div>
@@ -3573,7 +2872,7 @@ Therefore, TuitionCor aims to facilitate this process and make the job of a tuit
 </ul>
 </div>
 <div class="sect2">
-<h3 id="use-case-matching-a-tutor"><a class="link" href="#use-case-matching-a-tutor">D.1. Use case: Matching a tutor</a></h3>
+<h3 id="use-case-matching-a-tutor"><a class="link" href="#use-case-matching-a-tutor">Use case: Matching a tutor</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3742,7 +3041,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3780,7 +3079,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3812,7 +3111,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3840,7 +3139,7 @@ Expected: Similar to previous.</p>
 <p>Given below are the minor and major feature contributions for each of our team member.</p>
 </div>
 <div class="sect2">
-<h3 id="ngeow-shan-yong-destin"><a class="link" href="#ngeow-shan-yong-destin">I.1. Ngeow Shan Yong Destin</a></h3>
+<h3 id="ngeow-shan-yong-destin"><a class="link" href="#ngeow-shan-yong-destin">Ngeow Shan Yong Destin</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3869,7 +3168,7 @@ In TuitionCor all Client added would be either a student or a tutor, hence this 
 </div>
 </div>
 <div class="sect2">
-<h3 id="zhu-jiahui"><a class="link" href="#zhu-jiahui">I.2. Zhu Jiahui</a></h3>
+<h3 id="zhu-jiahui"><a class="link" href="#zhu-jiahui">Zhu Jiahui</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3898,7 +3197,7 @@ This allows the user be able to search for anything related to the person he wis
 </div>
 </div>
 <div class="sect2">
-<h3 id="lim-hong-cho"><a class="link" href="#lim-hong-cho">I.3. Lim Hong Cho</a></h3>
+<h3 id="lim-hong-cho"><a class="link" href="#lim-hong-cho">Lim Hong Cho</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3924,6 +3223,170 @@ This would allow the user to view the sorted list of Students and Tutors separat
 </div>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-feature-2"><a class="link" href="#switch-feature-2">Switch feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Switch commands allows user to toggle between the active and closed client&#8217;s list and it extends Command.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch command overrides execute method in Command with the following code:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ClientListSwitchEvent());
+        listPanelController.switchDisplay();
+        <span class="keyword">if</span> (listPanelController.getCurrentListDisplayed() == ListPanelController.DisplayType.closedList) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + MESSAGE_CLOSED_DISPLAY_LIST);
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + MESSAGE_ACTIVE_DISPLAY_LIST);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A ListPanelController is used to keep track of the currently displayed list and switch the list when called.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> switchDisplay() {
+        <span class="keyword">switch</span> (currentlyDisplayed) {
+        <span class="keyword">case</span> activeList:
+            currentlyDisplayed = DisplayType.closedList;
+            <span class="keyword">break</span>;
+
+        <span class="keyword">case</span> closedList:
+            currentlyDisplayed = DisplayType.activeList;
+            <span class="keyword">break</span>;
+
+        <span class="keyword">default</span>:
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">This should not be possible.</span><span class="delimiter">&quot;</span></span>);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch command uses ClientListSwitchEvent to raise an event whenever the user wants to toggle the list displayed.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">   <span class="directive">public</span> <span class="type">class</span> <span class="class">ClientListSwitchEvent</span> <span class="directive">extends</span> BaseEvent {
+
+       <span class="annotation">@Override</span>
+       <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+           <span class="keyword">return</span> <span class="local-variable">this</span>.getClass().getSimpleName();
+       }
+   }
+[source,java]</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When a event is raise it&#8217;s handled by handleClientListSwitchEvent which resides in both StudentListPanel and TutorListPanel.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleClientListSwitchEvent(ClientListSwitchEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        switchListDisplay();
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This will allow StudentListPanel and TutorListPanel to be updated accordingly based on the current list that is on display.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> switchListDisplay() {
+        ListPanelController listPanelController = ListPanelController.getInstance();
+        <span class="keyword">switch</span> (listPanelController.getCurrentListDisplayed()) {
+        <span class="keyword">case</span> activeList:
+            setConnectionsForClosedStudents();
+            <span class="keyword">break</span>;
+
+        <span class="keyword">case</span> closedList:
+            setConnectionsForStudents();
+            <span class="keyword">break</span>;
+
+        <span class="keyword">default</span>:
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">This should not be possible.</span><span class="delimiter">&quot;</span></span>);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A sequence diagram is shown below when switch command is entered by user.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SwitchSequenceDiagram.PNG" alt="SwitchSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-switch-command-2"><a class="link" href="#aspect-implementation-of-switch-command-2">Aspect: Implementation of switch command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Raise new event to indicate switch event.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduce direct coupling between components StudentListPanel and TutorListPanel with SwitchCommand</p>
+</li>
+<li>
+<p>Cons: Code might be harder to understand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Call a method in StudentListPanel and TutorListPanel to indicate switch event.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code is easier to understand.</p>
+</li>
+<li>
+<p>Cons: Direct coupling increase and changing a part might affect another component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
